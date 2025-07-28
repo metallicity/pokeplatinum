@@ -2018,33 +2018,33 @@
     .short 359
     .endm
 
-    .macro LoadDoorAnimation arg0, arg1, arg2, arg3, arg4
+    .macro LoadDoorAnimation x1, z1, x2, z2, tag
     .short 360
-    .short \arg0
-    .short \arg1
-    .short \arg2
-    .short \arg3
-    .byte \arg4
+    .short \x1
+    .short \z1
+    .short \x2
+    .short \z2
+    .byte \tag
     .endm
 
-    .macro WaitForDoorAnimation arg0
+    .macro WaitForDoorAnimation tag
     .short 361
-    .byte \arg0
+    .byte \tag
     .endm
 
-    .macro UnloadDoorAnimation arg0
+    .macro UnloadDoorAnimation tag
     .short 362
-    .byte \arg0
+    .byte \tag
     .endm
 
-    .macro PlayOpenDoorAnimation arg0
+    .macro PlayOpenDoorAnimation tag
     .short 363
-    .byte \arg0
+    .byte \tag
     .endm
 
-    .macro PlayCloseDoorAnimation arg0
+    .macro PlayCloseDoorAnimation tag
     .short 364
-    .byte \arg0
+    .byte \tag
     .endm
 
     .macro BufferDaycareMonNicknames
