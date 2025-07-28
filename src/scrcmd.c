@@ -507,11 +507,11 @@ static BOOL ScrCmd_SetWarpEventPos(ScriptContext *ctx);
 static BOOL ScrCmd_18B(ScriptContext *ctx);
 static BOOL ScrCmd_18C(ScriptContext *ctx);
 static BOOL ScrCmd_18F(ScriptContext *ctx);
-static BOOL ScrCmd_168(ScriptContext *ctx);
-static BOOL ScrCmd_169(ScriptContext *ctx);
-static BOOL ScrCmd_16A(ScriptContext *ctx);
-static BOOL ScrCmd_16B(ScriptContext *ctx);
-static BOOL ScrCmd_16C(ScriptContext *ctx);
+static BOOL ScrCmd_LoadDoorAnimation(ScriptContext *ctx);
+static BOOL ScrCmd_WaitForDoorAnimation(ScriptContext *ctx);
+static BOOL ScrCmd_UnloadDoorAnimation(ScriptContext *ctx);
+static BOOL ScrCmd_PlayOpenDoorAnimation(ScriptContext *ctx);
+static BOOL ScrCmd_PlayCloseDoorAnimation(ScriptContext *ctx);
 static BOOL ScrCmd_InitPersistedMapFeaturesForPastoriaGym(ScriptContext *ctx);
 static BOOL ScrCmd_170(ScriptContext *ctx);
 static BOOL ScrCmd_InitPersistedMapFeaturesForHearthomeGym(ScriptContext *ctx);
@@ -1130,11 +1130,11 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_ClearStepFlag,
     ScrCmd_CheckGameCompleted,
     ScrCmd_SetGameCompleted,
-    ScrCmd_168,
-    ScrCmd_169,
-    ScrCmd_16A,
-    ScrCmd_16B,
-    ScrCmd_16C,
+    ScrCmd_LoadDoorAnimation,
+    ScrCmd_WaitForDoorAnimation,
+    ScrCmd_UnloadDoorAnimation,
+    ScrCmd_PlayOpenDoorAnimation,
+    ScrCmd_PlayCloseDoorAnimation,
     ScrCmd_BufferDaycareMonNicknames,
     ScrCmd_GetDaycareState,
     ScrCmd_InitPersistedMapFeaturesForPastoriaGym,
@@ -5505,7 +5505,7 @@ static BOOL ScrCmd_18F(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_168(ScriptContext *ctx)
+static BOOL ScrCmd_LoadDoorAnimation(ScriptContext *ctx)
 {
     u16 v0 = ScriptContext_ReadHalfWord(ctx);
     u16 v1 = ScriptContext_ReadHalfWord(ctx);
@@ -5522,7 +5522,7 @@ static BOOL ScrCmd_168(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_169(ScriptContext *ctx)
+static BOOL ScrCmd_WaitForDoorAnimation(ScriptContext *ctx)
 {
     u8 v0 = ScriptContext_ReadByte(ctx);
     FieldSystem *fieldSystem = ctx->fieldSystem;
@@ -5531,7 +5531,7 @@ static BOOL ScrCmd_169(ScriptContext *ctx)
     return TRUE;
 }
 
-static BOOL ScrCmd_16A(ScriptContext *ctx)
+static BOOL ScrCmd_UnloadDoorAnimation(ScriptContext *ctx)
 {
     u8 v0 = ScriptContext_ReadByte(ctx);
     FieldSystem *fieldSystem = ctx->fieldSystem;
@@ -5540,7 +5540,7 @@ static BOOL ScrCmd_16A(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_16B(ScriptContext *ctx)
+static BOOL ScrCmd_PlayOpenDoorAnimation(ScriptContext *ctx)
 {
     u8 v0 = ScriptContext_ReadByte(ctx);
     FieldSystem *fieldSystem = ctx->fieldSystem;
@@ -5549,7 +5549,7 @@ static BOOL ScrCmd_16B(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_16C(ScriptContext *ctx)
+static BOOL ScrCmd_PlayCloseDoorAnimation(ScriptContext *ctx)
 {
     u8 v0 = ScriptContext_ReadByte(ctx);
     FieldSystem *fieldSystem = ctx->fieldSystem;

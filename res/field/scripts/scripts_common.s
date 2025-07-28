@@ -892,13 +892,13 @@ _0BEE:
 _0C06:
     ScrCmd_24B 90
     ScrCmd_24C 90
-    ScrCmd_169 90
+    WaitForDoorAnimation 90
     Return
 
 _0C11:
     ScrCmd_24D 90
-    ScrCmd_169 90
-    ScrCmd_16A 90
+    WaitForDoorAnimation 90
+    UnloadDoorAnimation 90
     Return
 
 _0C1C:
@@ -1123,7 +1123,7 @@ _0F80:
 _0F94:
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_16A 90
+    UnloadDoorAnimation 90
     Return
 
 _0FA5:

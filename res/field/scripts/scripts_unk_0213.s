@@ -45,7 +45,7 @@ _0075:
 
 _008F:
     LockAll
-    ScrCmd_168 0, 0, VAR_MAP_LOCAL_0, VAR_MAP_LOCAL_2, 77
+    LoadDoorAnimation 0, 0, VAR_MAP_LOCAL_0, VAR_MAP_LOCAL_2, 77
     Call _050B
     ShowObject LOCALID_PLAYER
     ApplyMovement LOCALID_PLAYER, _00F0
@@ -53,7 +53,7 @@ _008F:
     Call _0513
     ApplyMovement LOCALID_PLAYER, _00F8
     WaitMovement
-    ScrCmd_168 0, 0, VAR_MAP_LOCAL_0, VAR_MAP_LOCAL_1, 77
+    LoadDoorAnimation 0, 0, VAR_MAP_LOCAL_0, VAR_MAP_LOCAL_1, 77
     Call _050B
     ApplyMovement LOCALID_PLAYER, _0100
     WaitMovement
@@ -311,14 +311,14 @@ _046A:
     WaitABPressTime 45
     ScrCmd_135 96
     CloseMessage
-    ScrCmd_168 0, 0, 13, 5, 77
+    LoadDoorAnimation 0, 0, 13, 5, 77
     Call _050B
     ApplyMovement LOCALID_PLAYER, _0524
     WaitMovement
     Call _0513
     ApplyMovement LOCALID_PLAYER, _0530
     WaitMovement
-    ScrCmd_168 0, 0, 13, 2, 77
+    LoadDoorAnimation 0, 0, 13, 2, 77
     Call _050B
     ApplyMovement LOCALID_PLAYER, _0538
     WaitMovement
@@ -336,14 +336,14 @@ _04F3:
     End
 
 _050B:
-    ScrCmd_16B 77
-    ScrCmd_169 77
+    PlayOpenDoorAnimation 77
+    WaitForDoorAnimation 77
     Return
 
 _0513:
-    ScrCmd_16C 77
-    ScrCmd_169 77
-    ScrCmd_16A 77
+    PlayCloseDoorAnimation 77
+    WaitForDoorAnimation 77
+    UnloadDoorAnimation 77
     Return
 
 _051E:
@@ -420,14 +420,14 @@ _062D:
     SetFlag FLAG_COMMUNICATION_CLUB_ACCESSIBLE
     Message 63
     CloseMessage
-    ScrCmd_168 0, 0, 8, 5, 77
+    LoadDoorAnimation 0, 0, 8, 5, 77
     Call _050B
     ApplyMovement LOCALID_PLAYER, _0524
     WaitMovement
     Call _0513
     ApplyMovement LOCALID_PLAYER, _0530
     WaitMovement
-    ScrCmd_168 0, 0, 8, 2, 77
+    LoadDoorAnimation 0, 0, 8, 2, 77
     Call _050B
     ApplyMovement LOCALID_PLAYER, _0538
     WaitMovement

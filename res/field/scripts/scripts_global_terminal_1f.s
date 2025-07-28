@@ -40,13 +40,13 @@ _006B:
     End
 
 _0077:
-    ScrCmd_168 0, 0, 8, 2, 77
+    LoadDoorAnimation 0, 0, 8, 2, 77
     Call _00C5
     ShowObject LOCALID_PLAYER
     ApplyMovement LOCALID_PLAYER, _00D8
     WaitMovement
     Call _00CD
-    ScrCmd_168 0, 0, 8, 4, 77
+    LoadDoorAnimation 0, 0, 8, 4, 77
     Call _00C5
     ApplyMovement LOCALID_PLAYER, _00E8
     WaitMovement
@@ -55,14 +55,14 @@ _0077:
     Return
 
 _00C5:
-    ScrCmd_16B 77
-    ScrCmd_169 77
+    PlayOpenDoorAnimation 77
+    WaitForDoorAnimation 77
     Return
 
 _00CD:
-    ScrCmd_16C 77
-    ScrCmd_169 77
-    ScrCmd_16A 77
+    PlayCloseDoorAnimation 77
+    WaitForDoorAnimation 77
+    UnloadDoorAnimation 77
     Return
 
     .balign 4, 0
@@ -166,12 +166,12 @@ _020D:
     CloseMessage
     ApplyMovement LOCALID_PLAYER, _0344
     WaitMovement
-    ScrCmd_168 0, 0, 8, 4, 77
+    LoadDoorAnimation 0, 0, 8, 4, 77
     Call _00C5
     ApplyMovement LOCALID_PLAYER, _0358
     WaitMovement
     Call _00CD
-    ScrCmd_168 0, 0, 8, 2, 77
+    LoadDoorAnimation 0, 0, 8, 2, 77
     Call _00C5
     ApplyMovement LOCALID_PLAYER, _0350
     WaitMovement

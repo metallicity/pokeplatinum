@@ -715,14 +715,14 @@ _09FA:
     CloseMessage
     ApplyMovement 18, _0A38
     WaitMovement
-    ScrCmd_168 1, 22, 5, 14, 77
-    ScrCmd_16B 77
-    ScrCmd_169 77
+    LoadDoorAnimation 1, 22, 5, 14, 77
+    PlayOpenDoorAnimation 77
+    WaitForDoorAnimation 77
     ApplyMovement 18, _0A40
     WaitMovement
-    ScrCmd_16C 77
-    ScrCmd_169 77
-    ScrCmd_16A 77
+    PlayCloseDoorAnimation 77
+    WaitForDoorAnimation 77
+    UnloadDoorAnimation 77
     RemoveObject 18
     ReleaseAll
     End

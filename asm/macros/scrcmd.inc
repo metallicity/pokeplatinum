@@ -2018,7 +2018,7 @@
     .short 359
     .endm
 
-    .macro ScrCmd_168 arg0, arg1, arg2, arg3, arg4
+    .macro LoadDoorAnimation arg0, arg1, arg2, arg3, arg4
     .short 360
     .short \arg0
     .short \arg1
@@ -2027,22 +2027,22 @@
     .byte \arg4
     .endm
 
-    .macro ScrCmd_169 arg0
+    .macro WaitForDoorAnimation arg0
     .short 361
     .byte \arg0
     .endm
 
-    .macro ScrCmd_16A arg0
+    .macro UnloadDoorAnimation arg0
     .short 362
     .byte \arg0
     .endm
 
-    .macro ScrCmd_16B arg0
+    .macro PlayOpenDoorAnimation arg0
     .short 363
     .byte \arg0
     .endm
 
-    .macro ScrCmd_16C arg0
+    .macro PlayCloseDoorAnimation arg0
     .short 364
     .byte \arg0
     .endm

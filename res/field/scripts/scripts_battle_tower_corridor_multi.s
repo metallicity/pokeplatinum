@@ -49,12 +49,12 @@ _008D:
     End
 
 _00C9:
-    ScrCmd_168 0, 0, 3, 2, 77
-    ScrCmd_168 0, 0, 14, 2, 78
-    ScrCmd_16B 77
-    ScrCmd_16B 78
-    ScrCmd_169 77
-    ScrCmd_169 78
+    LoadDoorAnimation 0, 0, 3, 2, 77
+    LoadDoorAnimation 0, 0, 14, 2, 78
+    PlayOpenDoorAnimation 77
+    PlayOpenDoorAnimation 78
+    WaitForDoorAnimation 77
+    WaitForDoorAnimation 78
     ApplyMovement 0, _0174
     ApplyMovement 1, _0174
     WaitMovement
@@ -63,12 +63,12 @@ _00C9:
     ApplyMovement 2, _0180
     ApplyMovement 3, _0180
     WaitMovement
-    ScrCmd_16C 77
-    ScrCmd_16C 78
-    ScrCmd_169 77
-    ScrCmd_169 78
-    ScrCmd_16A 77
-    ScrCmd_16A 78
+    PlayCloseDoorAnimation 77
+    PlayCloseDoorAnimation 78
+    WaitForDoorAnimation 77
+    WaitForDoorAnimation 78
+    UnloadDoorAnimation 77
+    UnloadDoorAnimation 78
     Return
 
 _012B:

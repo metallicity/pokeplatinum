@@ -37,17 +37,17 @@ _0066:
     End
 
 _008E:
-    ScrCmd_168 0, 0, 2, 2, 77
-    ScrCmd_16B 77
-    ScrCmd_169 77
+    LoadDoorAnimation 0, 0, 2, 2, 77
+    PlayOpenDoorAnimation 77
+    WaitForDoorAnimation 77
     ApplyMovement 0, _0140
     WaitMovement
     ShowObject LOCALID_PLAYER
     ApplyMovement LOCALID_PLAYER, _014C
     WaitMovement
-    ScrCmd_16C 77
-    ScrCmd_169 77
-    ScrCmd_16A 77
+    PlayCloseDoorAnimation 77
+    WaitForDoorAnimation 77
+    UnloadDoorAnimation 77
     Return
 
 BattleTowerCorridor_Unused:
