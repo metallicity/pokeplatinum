@@ -1639,7 +1639,7 @@
     .short \arg1
     .endm
 
-    .macro ScrCmd_11B arg0, arg1, arg2, arg3, arg4
+    .macro SetWarpEvent arg0, arg1, arg2, arg3, arg4
     .short 283
     .short \arg0
     .short \arg1
