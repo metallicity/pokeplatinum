@@ -5470,11 +5470,11 @@ static BOOL ScrCmd_SetWarpEventPos(ScriptContext *ctx)
 
 static BOOL ScrCmd_SetBgEventPos(ScriptContext *ctx)
 {
-    u16 v0 = ScriptContext_GetVar(ctx);
-    u16 v1 = ScriptContext_GetVar(ctx);
-    u16 v2 = ScriptContext_GetVar(ctx);
+    u16 index = ScriptContext_GetVar(ctx);
+    u16 x = ScriptContext_GetVar(ctx);
+    u16 z = ScriptContext_GetVar(ctx);
 
-    MapHeaderData_SetBgEventPos(ctx->fieldSystem, v0, v1, v2);
+    MapHeaderData_SetBgEventPos(ctx->fieldSystem, index, x, z);
     return FALSE;
 }
 
