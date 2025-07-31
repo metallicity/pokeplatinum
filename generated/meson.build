@@ -44,6 +44,7 @@ metang_generators = {
     'days_of_week': { 'type': 'enum', 'tag': 'DayOfWeek' },
     'distribution_events': { 'type': 'enum', 'tag': 'DistributionEvent' },
     'egg_groups': { 'type': 'enum', 'tag': 'EggGroup' },
+    'elevator_dirs': { 'type': 'enum', 'tag': 'ElevatorDir' },
     'evolution_methods': { 'type': 'enum', 'tag': 'EvolutionMethod' },
     'exp_rates': { 'type': 'enum', 'tag': 'ExpRate' },
     'game_records': { 'type': 'enum', 'tag': 'GameRecord' },

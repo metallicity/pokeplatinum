@@ -2,6 +2,7 @@
 #include "generated/badges.h"
 #include "generated/catching_show_points_category.h"
 #include "generated/days_of_week.h"
+#include "generated/elevator_dirs.h"
 #include "generated/fade_types.h"
 #include "generated/game_records.h"
 #include "generated/genders.h"
@@ -1650,13 +1651,13 @@
     .short \arg1
     .endm
 
-    .macro SetExitLocation arg0, arg1, arg2, arg3, arg4
+    .macro SetExitLocation mapId, warpId, x, z, dir
     .short 283
-    .short \arg0
-    .short \arg1
-    .short \arg2
-    .short \arg3
-    .short \arg4
+    .short \mapId
+    .short \warpId
+    .short \x
+    .short \z
+    .short \dir
     .endm
 
     /*
@@ -3222,10 +3223,10 @@
     .short \arg0
     .endm
 
-    .macro PlayElevatorAnimation arg0, arg1
+    .macro PlayElevatorAnimation elevatorDir, loopCount
     .short 572
-    .short \arg0
-    .short \arg1
+    .short \elevatorDir
+    .short \loopCount
     .endm
 
     .macro PlayBoatCutscene travelDir, exitDir, mapID, x, z
@@ -4811,10 +4812,10 @@
     .byte \arg0
     .endm
 
-    .macro BufferFloorNumber arg0, arg1
+    .macro BufferFloorNumber templateArg, floor
     .short 839
-    .byte \arg0
-    .byte \arg1
+    .byte \templateArg
+    .byte \floor
     .endm
 
 

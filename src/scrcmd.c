@@ -6396,10 +6396,10 @@ static BOOL ScrCmd_23B(ScriptContext *ctx)
 
 static BOOL ScrCmd_PlayElevatorAnimation(ScriptContext *ctx)
 {
-    u16 v0 = ScriptContext_GetVar(ctx);
-    u16 v1 = ScriptContext_GetVar(ctx);
+    u16 elevatorDir = ScriptContext_GetVar(ctx);
+    u16 animationLoopCount = ScriptContext_GetVar(ctx);
 
-    ov6_02246F00(ctx->fieldSystem, (u8)v0, (u8)v1);
+    FieldSystem_PlayElevatorAnimation(ctx->fieldSystem, (u8)elevatorDir, (u8)animationLoopCount);
     return TRUE;
 }
 
