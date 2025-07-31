@@ -504,7 +504,7 @@ static BOOL ScrCmd_SetPosition(ScriptContext *ctx);
 static BOOL ScrCmd_SetObjectEventMovementType(ScriptContext *ctx);
 static BOOL ScrCmd_SetObjectEventDir(ScriptContext *ctx);
 static BOOL ScrCmd_SetWarpEventPos(ScriptContext *ctx);
-static BOOL ScrCmd_18B(ScriptContext *ctx);
+static BOOL ScrCmd_SetBgEventPos(ScriptContext *ctx);
 static BOOL ScrCmd_18C(ScriptContext *ctx);
 static BOOL ScrCmd_18F(ScriptContext *ctx);
 static BOOL ScrCmd_LoadDoorAnimation(ScriptContext *ctx);
@@ -1165,7 +1165,7 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_SetObjectEventMovementType,
     ScrCmd_SetObjectEventDir,
     ScrCmd_SetWarpEventPos,
-    ScrCmd_18B,
+    ScrCmd_SetBgEventPos,
     ScrCmd_18C,
     ScrCmd_ShowSavingIcon,
     ScrCmd_HideSavingIcon,
@@ -5468,7 +5468,7 @@ static BOOL ScrCmd_SetWarpEventPos(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_18B(ScriptContext *ctx)
+static BOOL ScrCmd_SetBgEventPos(ScriptContext *ctx)
 {
     u16 v0 = ScriptContext_GetVar(ctx);
     u16 v1 = ScriptContext_GetVar(ctx);

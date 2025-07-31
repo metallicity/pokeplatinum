@@ -50,7 +50,7 @@ _00AD:
     End
 
 _00BB:
-    ScrCmd_18B 1, 243, 0x28A
+    SetBgEventPos 1, 243, 0x28A
     Return
 
 _00C5:
