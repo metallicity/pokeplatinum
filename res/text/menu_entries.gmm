@@ -496,31 +496,31 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">EXIT</language>
 	</row>
-	<row id="pl_msg_00000361_00116" index="116">
+	<row id="MenuEntries_Text_Floor1" index="116">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">1F</language>
 	</row>
-	<row id="pl_msg_00000361_00117" index="117">
+	<row id="MenuEntries_Text_Floor2" index="117">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">2F</language>
 	</row>
-	<row id="pl_msg_00000361_00118" index="118">
+	<row id="MenuEntries_Text_Floor3" index="118">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">3F</language>
 	</row>
-	<row id="pl_msg_00000361_00119" index="119">
+	<row id="MenuEntries_Text_Floor4" index="119">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">4F</language>
 	</row>
-	<row id="pl_msg_00000361_00120" index="120">
+	<row id="MenuEntries_Text_Floor5" index="120">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">5F</language>
 	</row>
-	<row id="pl_msg_00000361_00121" index="121">
+	<row id="MenuEntries_Text_FloorB1" index="121">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">B1F</language>
 	</row>
-	<row id="pl_msg_00000361_00122" index="122">
+	<row id="MenuEntries_Text_FloorB2" index="122">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">B2F</language>
 	</row>
@@ -528,7 +528,7 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">LOOKOUT</language>
 	</row>
-	<row id="pl_msg_00000361_00124" index="124">
+	<row id="MenuEntries_Text_ElevatorExit" index="124">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">EXIT</language>
 	</row>
