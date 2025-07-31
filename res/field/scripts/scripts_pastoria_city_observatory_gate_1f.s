@@ -65,7 +65,7 @@ _00F2:
 _0102:
     SetVar VAR_UNK_0x40DA, 1
     ScrCmd_202 0
-    SetWarpEvent 125, 2, 5, 2, 1
+    SetWarpEvent MAP_HEADER_PASTORIA_CITY_OBSERVATORY_GATE_1F, 2, 5, 2, 1
     PlayFanfare SEQ_SE_DP_KAIDAN2
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen

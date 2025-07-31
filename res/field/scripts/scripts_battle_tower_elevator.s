@@ -74,21 +74,21 @@ _0132:
 
 _0146:
     LockAll
-    SetVar VAR_MAP_LOCAL_0, 0
+    SetVar VAR_MAP_LOCAL_0, ELEVATOR_DIR_UP
     Call _0132
     GoTo _00A6
     End
 
 _015C:
     LockAll
-    SetVar VAR_MAP_LOCAL_0, 0
+    SetVar VAR_MAP_LOCAL_0, ELEVATOR_DIR_UP
     Call _0132
     GoTo _00E9
     End
 
 _0172:
     LockAll
-    SetVar VAR_MAP_LOCAL_0, 1
+    SetVar VAR_MAP_LOCAL_0, ELEVATOR_DIR_DOWN
     Call _0132
     GoTo _010A
     End
