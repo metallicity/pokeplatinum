@@ -2202,7 +2202,7 @@
     .short \z
     .endm
 
-    .macro ScrCmd_18B arg0, arg1, arg2
+    .macro SetBgEventPos arg0, arg1, arg2
     .short 395
     .short \arg0
     .short \arg1
