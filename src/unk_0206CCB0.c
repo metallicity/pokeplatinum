@@ -1744,7 +1744,7 @@ void sub_0206E398(FieldSystem *fieldSystem, u16 param1)
     v1->unk_02 = param1;
 
     {
-        UnkStruct_0202A750 *v2 = sub_0202A750(fieldSystem->saveData);
+        UnkStruct_0202A750 *v2 = SaveData_GetImageClips(fieldSystem->saveData);
         UnkStruct_02029C68 *v3 = sub_02029CA8(v2, 0);
 
         v1->unk_00 = sub_0202A184(v3);
@@ -2651,7 +2651,7 @@ static int sub_0206EE9C(UnkStruct_0202A750 *param0)
     int v0, v1;
 
     for (v0 = 0, v1 = 0; v0 < 11; v0++) {
-        if (sub_02029D10(param0, v0) == 1) {
+        if (SaveData_IsGalleryPortraitFilled(param0, v0) == 1) {
             v1++;
         }
     }
@@ -2663,7 +2663,7 @@ static int sub_0206EEBC(FieldSystem *fieldSystem, StringTemplate *param1, UnkStr
 {
     UnkStruct_02029C68 *v0;
     int v1, v2, v3, v4;
-    UnkStruct_0202A750 *v5 = sub_0202A750(fieldSystem->saveData);
+    UnkStruct_0202A750 *v5 = SaveData_GetImageClips(fieldSystem->saveData);
 
     v2 = sub_0206EE9C(v5);
 
@@ -2674,7 +2674,7 @@ static int sub_0206EEBC(FieldSystem *fieldSystem, StringTemplate *param1, UnkStr
     }
 
     for (v1 = 0; v1 < 11; v1++) {
-        if (sub_02029D10(v5, v1) == 1) {
+        if (SaveData_IsGalleryPortraitFilled(v5, v1) == 1) {
             if (v3 == 0) {
                 v4 = v1;
                 break;
@@ -2705,7 +2705,7 @@ static int sub_0206EEBC(FieldSystem *fieldSystem, StringTemplate *param1, UnkStr
 
 static BOOL sub_0206EF64(FieldSystem *fieldSystem, UnkStruct_ov6_022465F4 *param1)
 {
-    UnkStruct_0202A750 *v0 = sub_0202A750(fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(fieldSystem->saveData);
 
     if (sub_0206EE9C(v0) != 0) {
         return 1;
@@ -2829,7 +2829,7 @@ static int sub_0206F160(FieldSystem *fieldSystem, StringTemplate *param1, UnkStr
     pokemon = Party_GetPokemonBySlotIndex(party, SaveData_GetFirstNonEggInParty(fieldSystem->saveData));
 
     sub_0206CE74(param1, 0, Pokemon_GetValue(pokemon, MON_DATA_SPECIES, NULL), Pokemon_GetValue(pokemon, MON_DATA_GENDER, NULL), TrainerInfo_RegionCode(trainerInfo), TrainerInfo_GameCode(trainerInfo));
-    StringTemplate_SetContestAccessoryName(param1, 1, (LCRNG_Next() % 100));
+    StringTemplate_SetContestAccessoryName(param1, 1, LCRNG_Next() % 100);
 
     v1 = (LCRNG_Next() % (NATIONAL_DEX_COUNT - 2) + 1);
 

@@ -373,16 +373,16 @@ UnkStruct_02029D04 *sub_02029D04(UnkStruct_0202A750 *param0)
     return &param0->unk_7A4;
 }
 
-BOOL sub_02029D10(const UnkStruct_0202A750 *param0, int param1)
+BOOL SaveData_IsGalleryPortraitFilled(const UnkStruct_0202A750 *imageClips, int portraitID)
 {
-    GF_ASSERT(param1 < 11);
-    return sub_02029F34(&param0->unk_00[param1]);
+    GF_ASSERT(portraitID < 11);
+    return sub_02029F34(&imageClips->unk_00[portraitID]);
 }
 
-BOOL sub_02029D2C(const UnkStruct_0202A750 *param0, int param1)
+BOOL SaveData_IsLobbyPortraitFilled(const UnkStruct_0202A750 *imageClips, int portraitID)
 {
-    GF_ASSERT(param1 < 5);
-    return sub_0202A218(&param0->unk_4C8[param1]);
+    GF_ASSERT(portraitID < 5);
+    return sub_0202A218(&imageClips->unk_4C8[portraitID]);
 }
 
 BOOL sub_02029D50(const UnkStruct_02029D04 *param0, u32 param1, u32 param2)
@@ -971,7 +971,7 @@ void sub_0202A6A8(u8 param0, int param1, UnkStruct_0202A750 *param2, const void 
     }
 }
 
-UnkStruct_0202A750 *sub_0202A750(SaveData *saveData)
+UnkStruct_0202A750 *SaveData_GetImageClips(SaveData *saveData)
 {
     return SaveData_SaveTable(saveData, SAVE_TABLE_ENTRY_IMAGE_CLIPS);
 }
