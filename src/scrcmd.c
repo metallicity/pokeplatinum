@@ -382,9 +382,9 @@ static BOOL ScrCmd_0A5(ScriptContext *ctx);
 static BOOL ScrCmd_30E(ScriptContext *ctx);
 static BOOL ScrCmd_0A6(ScriptContext *ctx);
 static BOOL ScrCmd_ShowGalleryPortrait(ScriptContext *ctx);
-static BOOL ScrCmd_0A8(ScriptContext *ctx);
+static BOOL ScrCmd_ShowLobbyPortrait(ScriptContext *ctx);
 static BOOL ScrCmd_CheckGalleryPortrait(ScriptContext *ctx);
-static BOOL ScrCmd_12F(ScriptContext *ctx);
+static BOOL ScrCmd_CheckLobbyPortrait(ScriptContext *ctx);
 static BOOL ScrCmd_130(ScriptContext *ctx);
 static BOOL ScrCmd_OpenSealCapsuleEditor(ScriptContext *ctx);
 static BOOL ScrCmd_0AA(ScriptContext *ctx);
@@ -938,7 +938,7 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_0A5,
     ScrCmd_0A6,
     ScrCmd_ShowGalleryPortrait,
-    ScrCmd_0A8,
+    ScrCmd_ShowLobbyPortrait,
     ScrCmd_OpenSealCapsuleEditor,
     ScrCmd_0AA,
     ScrCmd_OpenPokemonStorage,
@@ -1073,7 +1073,7 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_CheckSaveType,
     ScrCmd_TrySaveGame,
     ScrCmd_CheckGalleryPortrait,
-    ScrCmd_12F,
+    ScrCmd_CheckLobbyPortrait,
     ScrCmd_130,
     ScrCmd_131,
     ScrCmd_132,
@@ -3986,7 +3986,7 @@ static BOOL ScrCmd_ShowGalleryPortrait(ScriptContext *ctx)
     return TRUE;
 }
 
-static BOOL ScrCmd_0A8(ScriptContext *ctx)
+static BOOL ScrCmd_ShowLobbyPortrait(ScriptContext *ctx)
 {
     void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
     int v1 = ScriptContext_ReadHalfWord(ctx);
@@ -4024,7 +4024,7 @@ static BOOL ScrCmd_CheckGalleryPortrait(ScriptContext *ctx)
     return TRUE;
 }
 
-static BOOL ScrCmd_12F(ScriptContext *ctx)
+static BOOL ScrCmd_CheckLobbyPortrait(ScriptContext *ctx)
 {
     int v1 = ScriptContext_ReadHalfWord(ctx);
     u16 *v2 = ScriptContext_GetVarPointer(ctx);
