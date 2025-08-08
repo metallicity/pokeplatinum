@@ -286,11 +286,11 @@ _03C4:
 _03CC:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 0, VAR_RESULT
+    CheckGalleryPortrait 0, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 0, VAR_RESULT
+    ShowGalleryPortrait 0, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -300,11 +300,11 @@ _03CC:
 _0409:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 1, VAR_RESULT
+    CheckGalleryPortrait 1, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 1, VAR_RESULT
+    ShowGalleryPortrait 1, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -314,11 +314,11 @@ _0409:
 _0446:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 2, VAR_RESULT
+    CheckGalleryPortrait 2, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 2, VAR_RESULT
+    ShowGalleryPortrait 2, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -328,11 +328,11 @@ _0446:
 _0483:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 3, VAR_RESULT
+    CheckGalleryPortrait 3, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 3, VAR_RESULT
+    ShowGalleryPortrait 3, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -342,11 +342,11 @@ _0483:
 _04C0:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 4, VAR_RESULT
+    CheckGalleryPortrait 4, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 4, VAR_RESULT
+    ShowGalleryPortrait 4, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -356,11 +356,11 @@ _04C0:
 _04FD:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 5, VAR_RESULT
+    CheckGalleryPortrait 5, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 5, VAR_RESULT
+    ShowGalleryPortrait 5, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -370,11 +370,11 @@ _04FD:
 _053A:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 6, VAR_RESULT
+    CheckGalleryPortrait 6, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 6, VAR_RESULT
+    ShowGalleryPortrait 6, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -384,11 +384,11 @@ _053A:
 _0577:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 7, VAR_RESULT
+    CheckGalleryPortrait 7, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 7, VAR_RESULT
+    ShowGalleryPortrait 7, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -398,11 +398,11 @@ _0577:
 _05B4:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 8, VAR_RESULT
+    CheckGalleryPortrait 8, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 8, VAR_RESULT
+    ShowGalleryPortrait 8, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -412,11 +412,11 @@ _05B4:
 _05F1:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 9, VAR_RESULT
+    CheckGalleryPortrait 9, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 9, VAR_RESULT
+    ShowGalleryPortrait 9, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -426,11 +426,11 @@ _05F1:
 _062E:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
-    ScrCmd_12E 10, VAR_RESULT
+    CheckGalleryPortrait 10, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _066B
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
-    ScrCmd_0A7 10, VAR_RESULT
+    ShowGalleryPortrait 10, VAR_RESULT
     ReturnToField
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen

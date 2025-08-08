@@ -1029,7 +1029,7 @@
     .short \arg2
     .endm
 
-    .macro ScrCmd_0A7 arg0, arg1
+    .macro ShowGalleryPortrait arg0, arg1
     .short 167
     .short \arg0
     .short \arg1
@@ -1743,7 +1743,7 @@
     .short \destVar
     .endm
 
-    .macro ScrCmd_12E arg0, arg1
+    .macro CheckGalleryPortrait arg0, arg1
     .short 302
     .short \arg0
     .short \arg1
