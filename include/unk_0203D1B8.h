@@ -61,7 +61,7 @@ UnkStruct_0203D9B8 *sub_0203D9B8(FieldSystem *fieldSystem, int heapID);
 void sub_0203D9D8(FieldSystem *fieldSystem, UnkStruct_ov90_021D0D80 *param1);
 void sub_0203DAC0(FieldTask *param0, u16 *param1, SaveData *saveData, u16 param3, u16 param4);
 BOOL sub_0203DB10(FieldSystem *fieldSystem, void *param1);
-BOOL sub_0203DB24(FieldSystem *fieldSystem, void *param1);
+BOOL FieldSystem_ShowPokemonPortrait(FieldSystem *fieldSystem, void *param1);
 BOOL sub_0203DBF0(FieldTask *param0);
 void sub_0203DDDC(FieldTask *param0);
 void sub_0203DDFC(FieldSystem *fieldSystem);

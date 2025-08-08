@@ -95,7 +95,7 @@ AccessoryShop *AccessoryShop_New(enum HeapId heapID, SaveData *saveData, BgConfi
     shop->heapID = heapID;
     shop->bgConfig = bgConfig;
     shop->saveData = saveData;
-    shop->unk_0C = sub_02029D04(sub_0202A750(shop->saveData));
+    shop->unk_0C = sub_02029D04(SaveData_GetImageClips(shop->saveData));
     shop->bag = SaveData_GetBag(saveData);
     shop->msgLoader = MessageLoader_Init(MESSAGE_LOADER_BANK_HANDLE, NARC_INDEX_MSGDATA__PL_MSG, TEXT_BANK_FLOWER_SHOP, shop->heapID);
 
@@ -280,7 +280,7 @@ static void AccessoryShop_LoadGraphics(AccessoryShop *shop)
 {
     LoadMessageBoxGraphics(shop->bgConfig, BG_LAYER_MAIN_3, 1, 10, shop->msgBoxFrame, shop->heapID);
     Font_LoadScreenIndicatorsPalette(PAL_LOAD_MAIN_BG, PLTT_OFFSET(12), shop->heapID);
-    LoadStandardWindowGraphics(shop->bgConfig, BG_LAYER_MAIN_3, (1 + (18 + 12)), FIELD_WINDOW_PALETTE_INDEX, 0, shop->heapID);
+    LoadStandardWindowGraphics(shop->bgConfig, BG_LAYER_MAIN_3, 1 + (18 + 12), FIELD_WINDOW_PALETTE_INDEX, 0, shop->heapID);
     Font_LoadTextPalette(PAL_LOAD_MAIN_BG, PLTT_OFFSET(FIELD_MESSAGE_PALETTE_INDEX), shop->heapID);
     Bg_ClearTilemap(shop->bgConfig, BG_LAYER_MAIN_3);
 }
@@ -310,7 +310,7 @@ static void AccessoryShop_ShowMsgBox(AccessoryShopMessageBox *msgbox, BgConfig *
     msgbox->renderDelay = renderDelay;
     msgbox->window = Window_New(heapID, 1);
 
-    Window_Add(bgConfig, msgbox->window, BG_LAYER_MAIN_3, 2, 19, 27, 4, 12, ((1 + (18 + 12)) + 9));
+    Window_Add(bgConfig, msgbox->window, BG_LAYER_MAIN_3, 2, 19, 27, 4, 12, (1 + (18 + 12)) + 9);
     Window_FillTilemap(msgbox->window, 15);
     Window_DrawMessageBoxWithScrollCursor(msgbox->window, FALSE, 1, 10);
 
@@ -411,7 +411,7 @@ static void AccessoryShop_ShowDescBox(AccessoryShopDescBox *descBox, BgConfig *b
     }
 
     descBox->window = Window_New(heapID, 1);
-    Window_Add(bgConfig, descBox->window, BG_LAYER_MAIN_3, 1, 11, 14, 6, FIELD_MESSAGE_PALETTE_INDEX, (((1 + (18 + 12)) + 9) + (27 * 4)));
+    Window_Add(bgConfig, descBox->window, BG_LAYER_MAIN_3, 1, 11, 14, 6, FIELD_MESSAGE_PALETTE_INDEX, ((1 + (18 + 12)) + 9) + (27 * 4));
     descBox->strTemplate = StringTemplate_Default(heapID);
 
     for (int i = 0; i < ACCESSORY_SHOP_FORMAT_STRS; i++) {
@@ -454,7 +454,7 @@ static void AccessoryShop_UpdateDescBox(AccessoryShopDescBox *descBox, u32 berry
         Text_AddPrinterWithParamsAndColor(descBox->window, FONT_SYSTEM, descBox->strbuf, 0, 16 * i, TEXT_SPEED_NO_TRANSFER, TEXT_COLOR(1, 2, 15), NULL);
     }
 
-    Window_DrawStandardFrame(descBox->window, FALSE, (1 + (18 + 12)), FIELD_WINDOW_PALETTE_INDEX);
+    Window_DrawStandardFrame(descBox->window, FALSE, 1 + (18 + 12), FIELD_WINDOW_PALETTE_INDEX);
 }
 
 static void AccessoryShop_ShowItemList(AccessoryShopItemList *itemList, BgConfig *bgConfig, enum HeapId heapID, const AccessoryShopItem *items, u32 maxItems, MessageLoader *msgLoader, void *param6, AccessoryShopUpdateFunc updateFunc, SpriteList *spriteList)
@@ -498,7 +498,7 @@ static void AccessoryShop_ShowItemList(AccessoryShopItemList *itemList, BgConfig
     itemList->updateFunc = updateFunc;
     itemList->window = Window_New(heapID, 1);
 
-    Window_Add(bgConfig, itemList->window, BG_LAYER_MAIN_3, 17, 1, 14, 16, FIELD_MESSAGE_PALETTE_INDEX, ((((1 + (18 + 12)) + 9) + (27 * 4)) + (14 * 6)));
+    Window_Add(bgConfig, itemList->window, BG_LAYER_MAIN_3, 17, 1, 14, 16, FIELD_MESSAGE_PALETTE_INDEX, (((1 + (18 + 12)) + 9) + (27 * 4)) + (14 * 6));
 
     itemList->strTemplate = StringTemplate_Default(heapID);
     itemList->tempStrbuf = Strbuf_Init(32, heapID);
@@ -528,7 +528,7 @@ static void AccessoryShop_ShowItemList(AccessoryShopItemList *itemList, BgConfig
 
     itemList->listMenu = ListMenu_New(&listTemplate, 0, 0, heapID);
 
-    Window_DrawStandardFrame(itemList->window, FALSE, (1 + (18 + 12)), FIELD_WINDOW_PALETTE_INDEX);
+    Window_DrawStandardFrame(itemList->window, FALSE, 1 + (18 + 12), FIELD_WINDOW_PALETTE_INDEX);
 
     for (i = 0; i < ACCESSORY_SHOP_RES_IDX_COUNT; i++) {
         itemList->spriteResCollections[i] = SpriteResourceCollection_New(1, i, heapID);
@@ -606,7 +606,7 @@ static void AccessoryShop_UpdateItemListMenu(AccessoryShopItemList *itemList)
 {
     itemList->updateFunc(itemList->unk_130, itemList->cursorPos);
 
-    Window_DrawStandardFrame(itemList->window, FALSE, (1 + (18 + 12)), FIELD_WINDOW_PALETTE_INDEX);
+    Window_DrawStandardFrame(itemList->window, FALSE, 1 + (18 + 12), FIELD_WINDOW_PALETTE_INDEX);
     AccessoryShop_UpdateScrollArrowsVisibility(itemList);
 }
 
@@ -699,7 +699,7 @@ static void AccessoryShop_ShowYesNoChoice(AccessoryShopYesNoChoice *yesNoChoice,
         return;
     }
 
-    yesNoChoice->menu = Menu_MakeYesNoChoice(bgConfig, &winTemplate, (1 + (18 + 12)), FIELD_WINDOW_PALETTE_INDEX, heapID);
+    yesNoChoice->menu = Menu_MakeYesNoChoice(bgConfig, &winTemplate, 1 + (18 + 12), FIELD_WINDOW_PALETTE_INDEX, heapID);
     yesNoChoice->heapID = heapID;
     yesNoChoice->active = TRUE;
 }

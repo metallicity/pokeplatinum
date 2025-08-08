@@ -1029,16 +1029,16 @@
     .short \arg2
     .endm
 
-    .macro ShowGalleryPortrait arg0, arg1
+    .macro ShowGalleryPortrait portraitID, isEmptyDestVar
     .short 167
-    .short \arg0
-    .short \arg1
+    .short \portraitID
+    .short \isEmptyDestVar
     .endm
 
-    .macro ShowLobbyPortrait arg0, arg1
+    .macro ShowLobbyPortrait portraitID, isEmptyDestVar
     .short 168
-    .short \arg0
-    .short \arg1
+    .short \portraitID
+    .short \isEmptyDestVar
     .endm
 
     .macro OpenSealCapsuleEditor
@@ -1743,16 +1743,16 @@
     .short \destVar
     .endm
 
-    .macro CheckGalleryPortrait arg0, arg1
+    .macro CheckGalleryPortrait portraitID, isFilledDestVar
     .short 302
-    .short \arg0
-    .short \arg1
+    .short \portraitID
+    .short \isFilledDestVar
     .endm
 
-    .macro CheckLobbyPortrait arg0, arg1
+    .macro CheckLobbyPortrait portraitID, isFilledDestVar
     .short 303
-    .short \arg0
-    .short \arg1
+    .short \portraitID
+    .short \isFilledDestVar
     .endm
 
     .macro ScrCmd_130 arg0

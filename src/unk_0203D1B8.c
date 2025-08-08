@@ -846,7 +846,7 @@ static UnkStruct_0203DA00 *sub_0203DA00(int heapID, SaveData *saveData, int para
 
     v0->unk_00 = v1;
 
-    v3 = sub_0202A750(saveData);
+    v3 = SaveData_GetImageClips(saveData);
     v4 = sub_02029CA8(v3, 0);
     v5 = sub_02029D04(v3);
 
@@ -917,7 +917,7 @@ BOOL sub_0203DB10(FieldSystem *fieldSystem, void *param1)
     return 1;
 }
 
-BOOL sub_0203DB24(FieldSystem *fieldSystem, void *param1)
+BOOL FieldSystem_ShowPokemonPortrait(FieldSystem *fieldSystem, void *param1)
 {
     FS_EXTERN_OVERLAY(overlay22);
 

@@ -3705,18 +3705,18 @@ static BOOL ScrCmd_Unused_09F(ScriptContext *ctx)
     return FALSE;
 }
 
-BOOL sub_02041CC8(ScriptContext *ctx)
+BOOL ScriptContext_FreePartyManagementDataAfterExit(ScriptContext *ctx)
 {
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
-    void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
+    void **partyManagementData = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
 
     if (FieldSystem_IsRunningApplication(fieldSystem)) {
         return FALSE;
     }
 
-    Heap_Free(*v0);
-    *v0 = NULL;
+    Heap_Free(*partyManagementData);
+    *partyManagementData = NULL;
 
     return TRUE;
 }
@@ -3779,16 +3779,16 @@ static BOOL ScrCmd_1F8(ScriptContext *ctx)
     return TRUE;
 }
 
-static BOOL sub_02041D98(FieldSystem *fieldSystem, int param1, int param2)
+static BOOL FieldSystem_IsPortraitFilled(FieldSystem *fieldSystem, int portraitLocationID, int portraitID)
 {
-    UnkStruct_0202A750 *v0 = sub_0202A750(fieldSystem->saveData);
+    UnkStruct_0202A750 *imageClips = SaveData_GetImageClips(fieldSystem->saveData);
 
-    if (param1 == 0) {
-        if (!sub_02029D10(v0, param2)) {
+    if (portraitLocationID == PORTRAIT_LOCATION_JUBILIFE_TV_GALLERY) {
+        if (!SaveData_IsGalleryPortraitFilled(imageClips, portraitID)) {
             return FALSE;
         }
     } else {
-        if (!sub_02029D2C(v0, param2)) {
+        if (!SaveData_IsLobbyPortraitFilled(imageClips, portraitID)) {
             return FALSE;
         }
     }
@@ -3796,22 +3796,22 @@ static BOOL sub_02041D98(FieldSystem *fieldSystem, int param1, int param2)
     return TRUE;
 }
 
-static UnkStruct_02041DC8 *sub_02041DC8(int heapID, FieldSystem *fieldSystem, int param2, int param3)
+static PokemonPortrait *FieldSystem_LoadPokemonPortrait(int heapID, FieldSystem *fieldSystem, int portraitLocationID, int portraitID)
 {
-    UnkStruct_0202A750 *v3 = sub_0202A750(fieldSystem->saveData);
+    UnkStruct_0202A750 *imageClips = SaveData_GetImageClips(fieldSystem->saveData);
 
-    if (!sub_02041D98(fieldSystem, param2, param3)) {
+    if (!FieldSystem_IsPortraitFilled(fieldSystem, portraitLocationID, portraitID)) {
         return NULL;
     }
 
-    UnkStruct_02041DC8 *v0 = Heap_AllocFromHeap(heapID, sizeof(UnkStruct_02041DC8));
-    memset(v0, 0, sizeof(UnkStruct_02041DC8));
+    PokemonPortrait *pokemonPortrait = Heap_AllocFromHeap(heapID, sizeof(PokemonPortrait));
+    memset(pokemonPortrait, 0, sizeof(PokemonPortrait));
 
-    v0->unk_00 = v3;
-    v0->unk_08 = param2;
-    v0->unk_04 = param3;
+    pokemonPortrait->imageClips = imageClips;
+    pokemonPortrait->portraitLocationID = portraitLocationID;
+    pokemonPortrait->portraitID = portraitID;
 
-    return v0;
+    return pokemonPortrait;
 }
 
 static BOOL ScrCmd_0A2(ScriptContext *ctx)
@@ -3966,84 +3966,84 @@ static BOOL ScrCmd_0A6(ScriptContext *ctx)
 
 static BOOL ScrCmd_ShowGalleryPortrait(ScriptContext *ctx)
 {
-    void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
-    int v1 = ScriptContext_ReadHalfWord(ctx);
-    u16 *v2 = ScriptContext_GetVarPointer(ctx);
+    void **pokemonPortrait = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
+    int portraitID = ScriptContext_ReadHalfWord(ctx);
+    u16 *portraitEmpty = ScriptContext_GetVarPointer(ctx);
 
-    *v0 = sub_02041DC8(HEAP_ID_FIELDMAP, ctx->fieldSystem, 0, v1);
+    *pokemonPortrait = FieldSystem_LoadPokemonPortrait(HEAP_ID_FIELDMAP, ctx->fieldSystem, PORTRAIT_LOCATION_JUBILIFE_TV_GALLERY, portraitID);
 
-    if (*v0 == NULL) {
-        *v2 = 1;
+    if (*pokemonPortrait == NULL) {
+        *portraitEmpty = TRUE;
 
         return TRUE;
     }
 
-    *v2 = 0;
+    *portraitEmpty = FALSE;
 
-    sub_0203DB24(ctx->fieldSystem, *v0);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    FieldSystem_ShowPokemonPortrait(ctx->fieldSystem, *pokemonPortrait);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
 
 static BOOL ScrCmd_ShowLobbyPortrait(ScriptContext *ctx)
 {
-    void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
-    int v1 = ScriptContext_ReadHalfWord(ctx);
-    u16 *v2 = ScriptContext_GetVarPointer(ctx);
+    void **pokemonPortrait = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
+    int portraitID = ScriptContext_ReadHalfWord(ctx);
+    u16 *portraitEmpty = ScriptContext_GetVarPointer(ctx);
 
-    *v0 = sub_02041DC8(HEAP_ID_FIELDMAP, ctx->fieldSystem, 1, v1);
+    *pokemonPortrait = FieldSystem_LoadPokemonPortrait(HEAP_ID_FIELDMAP, ctx->fieldSystem, PORTRAIT_LOCATION_CONTEST_HALL_LOBBY, portraitID);
 
-    if (*v0 == NULL) {
-        *v2 = 1;
+    if (*pokemonPortrait == NULL) {
+        *portraitEmpty = TRUE;
 
         return TRUE;
     }
 
-    *v2 = 0;
+    *portraitEmpty = FALSE;
 
-    sub_0203DB24(ctx->fieldSystem, *v0);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    FieldSystem_ShowPokemonPortrait(ctx->fieldSystem, *pokemonPortrait);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
 
 static BOOL ScrCmd_CheckGalleryPortrait(ScriptContext *ctx)
 {
-    int v1 = ScriptContext_ReadHalfWord(ctx);
-    u16 *v2 = ScriptContext_GetVarPointer(ctx);
+    int portraitID = ScriptContext_ReadHalfWord(ctx);
+    u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    BOOL v0 = sub_02041D98(ctx->fieldSystem, 0, v1);
+    BOOL portraitFilled = FieldSystem_IsPortraitFilled(ctx->fieldSystem, PORTRAIT_LOCATION_JUBILIFE_TV_GALLERY, portraitID);
 
-    if (v0 == TRUE) {
-        *v2 = 1;
+    if (portraitFilled == TRUE) {
+        *destVar = TRUE;
         return TRUE;
     }
 
-    *v2 = 0;
+    *destVar = FALSE;
     return TRUE;
 }
 
 static BOOL ScrCmd_CheckLobbyPortrait(ScriptContext *ctx)
 {
-    int v1 = ScriptContext_ReadHalfWord(ctx);
-    u16 *v2 = ScriptContext_GetVarPointer(ctx);
+    int portraitID = ScriptContext_ReadHalfWord(ctx);
+    u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    BOOL v0 = sub_02041D98(ctx->fieldSystem, 1, v1);
+    BOOL portraitFilled = FieldSystem_IsPortraitFilled(ctx->fieldSystem, PORTRAIT_LOCATION_CONTEST_HALL_LOBBY, portraitID);
 
-    if (v0 == TRUE) {
-        *v2 = 1;
+    if (portraitFilled == TRUE) {
+        *destVar = TRUE;
         return TRUE;
     }
 
-    *v2 = 0;
+    *destVar = FALSE;
     return TRUE;
 }
 
 static BOOL ScrCmd_130(ScriptContext *ctx)
 {
     u16 v0 = ScriptContext_GetVar(ctx);
-    UnkStruct_0202A750 *v1 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v1 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029C68 *v2 = sub_02029CA8(v1, 0);
 
     sub_0202A0A0(v2, v0);
@@ -4081,7 +4081,7 @@ static BOOL ScrCmd_0AA(ScriptContext *ctx)
 
     sub_0206B70C(ctx->fieldSystem, *v1, 2);
     sub_0203D884(ctx->fieldSystem, *v1);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -4093,7 +4093,7 @@ static BOOL ScrCmd_1D7(ScriptContext *ctx)
     u8 v0 = ScriptContext_ReadHalfWord(ctx);
     *v2 = sub_02099674(ctx->fieldSystem, v0, HEAP_ID_FIELDMAP);
 
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
     return TRUE;
 }
 
@@ -4131,7 +4131,7 @@ static BOOL ScrCmd_1D9(ScriptContext *ctx)
     v0->saveData = ctx->fieldSystem->saveData;
 
     sub_0203D9D8(ctx->fieldSystem, *v3);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -4178,7 +4178,7 @@ static BOOL ScrCmd_0AF(ScriptContext *ctx)
     void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
 
     *v0 = sub_0203DE34(ctx->fieldSystem);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -4194,7 +4194,7 @@ static BOOL ScrCmd_0B1(ScriptContext *ctx)
     void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
 
     *v0 = sub_0203E244(ctx->fieldSystem);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -5930,7 +5930,7 @@ static BOOL ScrCmd_1D2(ScriptContext *ctx)
     u16 v2 = ScriptContext_GetVar(ctx);
     u16 v3 = ScriptContext_GetVar(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
 
     sub_02029E2C(v1, v2, v3);
@@ -5943,7 +5943,7 @@ static BOOL ScrCmd_CanFitAccessory(ScriptContext *ctx)
     u16 count = ScriptContext_GetVar(ctx);
     u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
     *destVar = sub_02029D50(v1, accessory, count);
 
@@ -5956,7 +5956,7 @@ static BOOL ScrCmd_Unused_1D4(ScriptContext *ctx)
     u16 v3 = ScriptContext_GetVar(ctx);
     u16 *v4 = ScriptContext_GetVarPointer(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
 
     if (v3 <= sub_02029D94(v1, v2)) {
@@ -5972,7 +5972,7 @@ static BOOL ScrCmd_1D5(ScriptContext *ctx)
 {
     u16 v2 = ScriptContext_GetVar(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
 
     sub_02029EFC(v1, v2);
@@ -5984,7 +5984,7 @@ static BOOL ScrCmd_CheckBackdrop(ScriptContext *ctx)
     u16 backdrop = ScriptContext_GetVar(ctx);
     u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
     *destVar = sub_02029D80(v1, backdrop);
 
@@ -6024,7 +6024,7 @@ static BOOL ScrCmd_1EA(ScriptContext *ctx)
     void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
 
     *v0 = sub_0203E53C(ctx->fieldSystem, HEAP_ID_FIELD_TASK, 0);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -6034,7 +6034,7 @@ static BOOL ScrCmd_1EB(ScriptContext *ctx)
     void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
 
     *v0 = sub_0203E53C(ctx->fieldSystem, HEAP_ID_FIELD_TASK, 1);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -6738,7 +6738,7 @@ static BOOL ScrCmd_TryGetRandomMassageGirlAccessory(ScriptContext *ctx)
     int i;
     u16 *destAccessoryID = ScriptContext_GetVarPointer(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
 
     int unobtainedAccessoryCount = 0;
@@ -6839,7 +6839,7 @@ static BOOL ScrCmd_Unused_279(ScriptContext *ctx)
     u16 v2 = ScriptContext_GetVar(ctx);
     u16 v3 = ScriptContext_GetVar(ctx);
 
-    UnkStruct_0202A750 *v0 = sub_0202A750(ctx->fieldSystem->saveData);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(ctx->fieldSystem->saveData);
     UnkStruct_02029D04 *v1 = sub_02029D04(v0);
 
     sub_02029EA0(v1, v2, v3);
@@ -7445,7 +7445,7 @@ static BOOL ScrCmd_2C4(ScriptContext *ctx)
     v2->unk_20 = ctx->fieldSystem->battleSubscreenCursorOn;
 
     FieldTask_RunApplication(ctx->task, &Unk_020F8BE0, v2);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }
@@ -7554,7 +7554,7 @@ BOOL ScrCmd_2C8(ScriptContext *ctx)
     u16 v3 = ScriptContext_GetVar(ctx);
 
     *v0 = sub_0203E564(ctx->fieldSystem, v1, v2, v3, HEAP_ID_FIELD_TASK);
-    ScriptContext_Pause(ctx, sub_02041CC8);
+    ScriptContext_Pause(ctx, ScriptContext_FreePartyManagementDataAfterExit);
 
     return TRUE;
 }

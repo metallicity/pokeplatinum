@@ -3,6 +3,7 @@
 
 #include "generated/accessories.h"
 #include "generated/backdrops.h"
+#include "generated/portrait_locations.h"
 
 #define MENU_YES 0
 #define MENU_NO  1

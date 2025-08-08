@@ -328,8 +328,8 @@ static BOOL sub_02049368(FieldSystem *fieldSystem)
 
 static BOOL sub_02049378(FieldSystem *fieldSystem)
 {
-    UnkStruct_0202A750 *v0 = sub_0202A750(fieldSystem->saveData);
-    return sub_02029D10(v0, 0);
+    UnkStruct_0202A750 *v0 = SaveData_GetImageClips(fieldSystem->saveData);
+    return SaveData_IsGalleryPortraitFilled(v0, 0);
 }
 
 static BOOL sub_02049388(FieldSystem *fieldSystem)
