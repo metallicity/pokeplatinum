@@ -81,6 +81,7 @@ metang_generators = {
     'pokemon_stats': { 'type': 'enum', 'tag': 'PokemonStat' },
     'pokemon_types': { 'type': 'enum', 'tag': 'PokemonType' },
     'poketch_apps': { 'type': 'enum', 'tag': 'PoketchAppID' },
+    'portrait_locations': { 'type': 'enum', 'tag': 'PortraitLocation' },
     'ribbons': { 'type': 'enum', 'tag': 'RibbonID' },
     'roaming_slots': { 'type': 'enum', 'tag': 'RoamingSlot' },
     'save_types': { 'type': 'enum', 'tag': 'SaveType' },

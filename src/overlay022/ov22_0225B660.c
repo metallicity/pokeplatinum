@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "constants/graphics.h"
+#include "generated/portrait_locations.h"
 
 #include "struct_decls/struct_02029C68_decl.h"
 #include "struct_decls/struct_02029C88_decl.h"
@@ -58,7 +59,7 @@ static void ov22_0225BC18(UnkStruct_ov22_0225B85C *param0);
 int ov22_0225B660(ApplicationManager *appMan, int *param1)
 {
     UnkStruct_ov22_0225B85C *v0;
-    UnkStruct_02041DC8 *v1;
+    PokemonPortrait *pokemonPortrait;
 
     Heap_Create(HEAP_ID_APPLICATION, HEAP_ID_13, 0x20000);
     Heap_Create(HEAP_ID_APPLICATION, HEAP_ID_14, 0x40000);
@@ -69,16 +70,16 @@ int ov22_0225B660(ApplicationManager *appMan, int *param1)
     SetVBlankCallback(ov22_0225B848, v0);
     DisableHBlank();
 
-    v1 = ApplicationManager_Args(appMan);
+    pokemonPortrait = ApplicationManager_Args(appMan);
 
-    if (v1->unk_08 == 0) {
-        v0->unk_00 = sub_02029CA8(v1->unk_00, v1->unk_04);
+    if (pokemonPortrait->portraitLocationID == PORTRAIT_LOCATION_JUBILIFE_TV_GALLERY) {
+        v0->unk_00 = sub_02029CA8(pokemonPortrait->imageClips, pokemonPortrait->portraitID);
     } else {
-        v0->unk_04 = sub_02029CD0(v1->unk_00, v1->unk_04);
+        v0->unk_04 = sub_02029CD0(pokemonPortrait->imageClips, pokemonPortrait->portraitID);
     }
 
-    v0->unk_08 = v1->unk_04;
-    v0->unk_0C = v1->unk_08;
+    v0->unk_08 = pokemonPortrait->portraitID;
+    v0->unk_0C = pokemonPortrait->portraitLocationID;
 
     ov22_02255094();
     gSystem.whichScreenIs3D = DS_SCREEN_MAIN;

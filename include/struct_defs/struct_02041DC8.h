@@ -3,10 +3,10 @@
 
 #include "struct_decls/struct_0202A750_decl.h"
 
-typedef struct {
-    UnkStruct_0202A750 *unk_00;
-    u32 unk_04;
-    u32 unk_08;
-} UnkStruct_02041DC8;
+typedef struct PokemonPortrait {
+    UnkStruct_0202A750 *imageClips;
+    u32 portraitID;
+    u32 portraitLocationID;
+} PokemonPortrait;
 
 #endif // POKEPLATINUM_STRUCT_02041DC8_H

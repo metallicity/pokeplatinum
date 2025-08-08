@@ -403,7 +403,7 @@ UnkStruct_02095C48 *sub_02093800(const UnkStruct_02093800 *param0)
     int v1 = 4 - 1;
     int v2;
 
-    Heap_Create(HEAP_ID_FIELDMAP, HEAP_ID_20, (0x3000 + 0x1000));
+    Heap_Create(HEAP_ID_FIELDMAP, HEAP_ID_20, 0x3000 + 0x1000);
 
     v0 = sub_020937C4();
     v0->unk_19A4 = LCRNG_GetSeed();
@@ -1432,7 +1432,7 @@ u32 sub_02094904(UnkStruct_02095C48 *param0)
         UnkStruct_0202A750 *v1;
         UnkStruct_02029D04 *v2;
 
-        v1 = sub_0202A750(param0->saveData);
+        v1 = SaveData_GetImageClips(param0->saveData);
         v2 = sub_02029D04(v1);
 
         if (sub_02029D50(v2, v0, 1) == 0) {
@@ -1506,7 +1506,7 @@ static void sub_02094B30(SysTask *param0, void *param1)
         v1->unk_08++;
 
         if (v1->unk_08 > v1->unk_04[v1->unk_0A]) {
-            BrightnessController_StartTransition(6, 0, 4, (GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD), BRIGHTNESS_MAIN_SCREEN);
+            BrightnessController_StartTransition(6, 0, 4, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD, BRIGHTNESS_MAIN_SCREEN);
             Sound_PlayEffect(SEQ_SE_DP_CON_014);
             v1->unk_0A++;
             v1->unk_08 = 0;
@@ -1636,7 +1636,7 @@ void sub_02094C44(UnkStruct_02095C48 *param0, SaveData *saveData, u32 param2, Jo
     }
 
     if (sub_02094790(param0) == 0) {
-        UnkStruct_0202A750 *v11 = sub_0202A750(param0->saveData);
+        UnkStruct_0202A750 *v11 = SaveData_GetImageClips(param0->saveData);
         UnkStruct_02029C88 *v12 = sub_02029CD0(v11, param0->unk_00.unk_10F);
 
         sub_0202A25C(v12);
