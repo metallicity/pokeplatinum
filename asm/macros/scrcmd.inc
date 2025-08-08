@@ -1038,7 +1038,7 @@
     .short \arg1
     .endm
 
-    .macro ScrCmd_0A8 arg0, arg1
+    .macro ShowLobbyPortrait arg0, arg1
     .short 168
     .short \arg0
     .short \arg1
@@ -1760,7 +1760,7 @@
     .short \arg1
     .endm
 
-    .macro ScrCmd_12F arg0, arg1
+    .macro CheckLobbyPortrait arg0, arg1
     .short 303
     .short \arg0
     .short \arg1
