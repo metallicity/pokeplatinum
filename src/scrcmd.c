@@ -622,7 +622,7 @@ static BOOL ScrCmd_239(ScriptContext *ctx);
 static BOOL ScrCmd_GetSpeciesFootprintType(ScriptContext *ctx);
 static BOOL ScrCmd_23B(ScriptContext *ctx);
 static BOOL ScrCmd_PlayElevatorAnimation(ScriptContext *ctx);
-static BOOL ScrCmd_23D(ScriptContext *ctx);
+static BOOL ScrCmd_PlayBoatCutscene(ScriptContext *ctx);
 static BOOL ScrCmd_243(ScriptContext *ctx);
 static BOOL ScrCmd_244(ScriptContext *ctx);
 static BOOL ScrCmd_245(ScriptContext *ctx);
@@ -1343,7 +1343,7 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_GetSpeciesFootprintType,
     ScrCmd_23B,
     ScrCmd_PlayElevatorAnimation,
-    ScrCmd_23D,
+    ScrCmd_PlayBoatCutscene,
     ScrCmd_MysteryGiftGive,
     ScrCmd_Dummy23F,
     ScrCmd_Dummy240,
@@ -6403,7 +6403,7 @@ static BOOL ScrCmd_PlayElevatorAnimation(ScriptContext *ctx)
     return TRUE;
 }
 
-static BOOL ScrCmd_23D(ScriptContext *ctx)
+static BOOL ScrCmd_PlayBoatCutscene(ScriptContext *ctx)
 {
     u8 v0 = ScriptContext_ReadByte(ctx);
     u8 v1 = ScriptContext_ReadByte(ctx);
