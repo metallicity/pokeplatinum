@@ -4477,9 +4477,17 @@
     .short \arg0
     .endm
 
-    .macro CheckHeapMemory arg0
+    .macro CheckHeapMemory assertUnchangedFreeMemory
     .short 787
-    .short \arg0
+    .short \assertUnchangedFreeMemory
+    .endm
+
+    .macro RecordHeapMemory
+    CheckHeapMemory FALSE
+    .endm
+
+    .macro AssertHeapMemory
+    CheckHeapMemory TRUE
     .endm
 
     .macro ScrCmd_314 arg0
