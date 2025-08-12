@@ -179,7 +179,7 @@ _020D:
     ApplyMovement LOCALID_PLAYER, _0360
     WaitMovement
     Call _00CD
-    FadeScreen 6, 1, 0, 0
+    FadeScreenOut
     WaitFadeScreen
     ScrCmd_2B2
     ScrCmd_0B3 VAR_RESULT
@@ -187,7 +187,7 @@ _020D:
     ScrCmd_0B2 VAR_0x8004, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _02CE
     ReturnToField
-    FadeScreen 6, 1, 1, 0
+    FadeScreenIn
     WaitFadeScreen
     Call _0077
     ReleaseAll
@@ -195,7 +195,7 @@ _020D:
 
 _02CE:
     ReturnToField
-    FadeScreen 6, 1, 1, 0
+    FadeScreenIn
     WaitFadeScreen
     Call _0077
     GoTo _02EA
@@ -501,7 +501,7 @@ _0601:
     Message 29
     ShowYesNoMenu VAR_RESULT
     GoToIfEq VAR_RESULT, MENU_NO, _0647
-    FadeScreen 6, 1, 0, 0
+    FadeScreenOut
     WaitFadeScreen
     CloseMessage
     ScrCmd_30E VAR_0x8004

@@ -1,15 +1,11 @@
 #ifndef POKEPLATINUM_PALETTE_H
 #define POKEPLATINUM_PALETTE_H
 
+#include "constants/colors.h"
 #include "constants/heap.h"
 #include "constants/narc.h"
 
 #define BlendColor(source, target, fraction) ((source) + (((target) - (source)) * (fraction) >> 4))
-
-#define ColorR(source) ((source) & 0x1F)
-#define ColorG(source) (((source) >> 5) & 0x1F)
-#define ColorB(source) (((source) >> 10) & 0x1F)
-#define RGB(r, g, b)   (((b) << 10) | ((g) << 5) | (r))
 
 enum PaletteBufferID {
     PLTTBUF_MAIN_BG = 0,
