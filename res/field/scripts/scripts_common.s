@@ -61,7 +61,7 @@
     ScriptEntry Common_Script_Unk_36
     ScriptEntry Common_Script_Unk_37
     ScriptEntry Common_Script_Unk_29
-    ScriptEntry Common_Script_Unk_38
+    ScriptEntry Common_CouldNotRemoveGriseousOrb
     ScriptEntryEnd
 
 Common_Script_Unk_0A:
@@ -1689,8 +1689,8 @@ _1706:
     ReturnCommonScript
     End
 
-Common_Script_Unk_38:
-    Message 130
+Common_CouldNotRemoveGriseousOrb:
+    Message Common_Text_CouldNotRemoveGriseousOrb
     WaitABXPadPress
     CloseMessage
     ReleaseAll

@@ -534,7 +534,7 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Check the move you want taught to\nsee what Shards are needed.</language>
 	</row>
-	<row id="pl_msg_00000213_00130" index="130">
+	<row id="Common_Text_CouldNotRemoveGriseousOrb" index="130">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Your Bag is full.\rThe Griseous Orb could not be removed,\nso you cannot enter.</language>
 	</row>

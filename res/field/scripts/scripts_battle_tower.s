@@ -1254,7 +1254,7 @@ _13AF:
 _13CE:
     Call _07B5
     Call _07B9
-    CallCommonScript COMMON_SCRIPT_UNK_39
+    CallCommonScript COMMON_SCRIPT_COULD_NOT_REMOVE_GRISEOUS_ORB
     End
 
 _13E0:

@@ -350,7 +350,7 @@ _05CD:
 
 _05E1:
     SetVar VAR_UNK_0x40BF, 0
-    CallCommonScript COMMON_SCRIPT_UNK_39
+    CallCommonScript COMMON_SCRIPT_COULD_NOT_REMOVE_GRISEOUS_ORB
     End
 
     .balign 4, 0

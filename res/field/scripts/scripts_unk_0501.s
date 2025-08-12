@@ -356,7 +356,7 @@ Unk501_Unused:
 
 _04EF:
     HideMoney
-    CallCommonScript COMMON_SCRIPT_UNK_39
+    CallCommonScript COMMON_SCRIPT_COULD_NOT_REMOVE_GRISEOUS_ORB
     End
 
     .balign 4, 0

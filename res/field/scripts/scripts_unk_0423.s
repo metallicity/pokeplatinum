@@ -182,7 +182,7 @@ _0277:
     End
 
 _02A9:
-    CallCommonScript COMMON_SCRIPT_UNK_39
+    CallCommonScript COMMON_SCRIPT_COULD_NOT_REMOVE_GRISEOUS_ORB
     End
 
 _02AF:

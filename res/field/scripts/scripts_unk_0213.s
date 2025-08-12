@@ -437,7 +437,7 @@ _062D:
     End
 
 _068E:
-    CallCommonScript COMMON_SCRIPT_UNK_39
+    CallCommonScript COMMON_SCRIPT_COULD_NOT_REMOVE_GRISEOUS_ORB
     End
 
 _0694:
