@@ -10,7 +10,7 @@
 
 _0012:
     SetVar VAR_0x8007, 3
-    CallCommonScript COMMON_SCRIPT_UNK_02
+    CallCommonScript COMMON_SCRIPT_POKECENTER_VISIT
     End
 
 _001E:

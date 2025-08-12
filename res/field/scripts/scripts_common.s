@@ -1,12 +1,15 @@
 #include "macros/scrcmd.inc"
 #include "generated/distribution_events.h"
+#include "generated/player_request_states.h"
+#include "generated/time_of_day.h"
+#include "generated/trainer_card_levels.h"
 #include "generated/tutor_locations.h"
 #include "res/text/bank/common_strings.h"
 #include "res/text/bank/menu_entries.h"
 
     ScriptEntry Common_HandleSignpostInput
     ScriptEntry Common_Script_Unk_01
-    ScriptEntry Common_Script_Unk_02
+    ScriptEntry Common_PokecenterVisit
     ScriptEntry Common_Script_Unk_03
     ScriptEntry Common_Script_Unk_04
     ScriptEntry Common_Script_Unk_05
@@ -70,158 +73,158 @@ Common_Script_Unk_0A:
 Common_Script_Unk_07:
     End
 
-Common_Script_Unk_02:
+Common_PokecenterVisit:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
-    ScrCmd_2BE VAR_RESULT
-    GoToIfGe VAR_RESULT, 4, _027A
-    SetVar VAR_0x8004, 0
+    TrainerCardLevel VAR_RESULT
+    GoToIfGe VAR_RESULT, TRAINER_CARD_LEVEL_GOLD, Common_PokecenterVisitGoldCard
+    SetVar VAR_0x8004, Common_Text_PokecenterHelloAndWelcome1
     GetTimeOfDay VAR_RESULT
     Dummy1F9 VAR_RESULT
-    SetVar VAR_0x8004, 120
-    GoToIfEq VAR_RESULT, 0, _0141
-    SetVar VAR_0x8004, 121
-    GoToIfEq VAR_RESULT, 1, _0141
-    SetVar VAR_0x8004, 0
-_0141:
+    SetVar VAR_0x8004, Common_Text_PokecenterGoodMorning
+    GoToIfEq VAR_RESULT, TIMEOFDAY_MORNING, Common_PokecenterGreetAndPrompt
+    SetVar VAR_0x8004, Common_Text_PokecenterHelloAndWelcome2
+    GoToIfEq VAR_RESULT, TIMEOFDAY_DAY, Common_PokecenterGreetAndPrompt
+    SetVar VAR_0x8004, Common_Text_PokecenterHelloAndWelcome1
+Common_PokecenterGreetAndPrompt:
     MessageVar VAR_0x8004
     ShowYesNoMenu VAR_RESULT
-    GoToIfEq VAR_RESULT, MENU_YES, _0172
-    GoToIfEq VAR_RESULT, MENU_NO, _0165
+    GoToIfEq VAR_RESULT, MENU_YES, Common_PokecenterPromptAccept
+    GoToIfEq VAR_RESULT, MENU_NO, Common_PokecenterPromptDecline
     End
 
-_0165:
-    Message 3
+Common_PokecenterPromptDecline:
+    Message Common_Text_PokecenterHopeToSeeYouAgain1
     WaitABXPadPress
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_0172:
-    SetPlayerState 0x100
+Common_PokecenterPromptAccept:
+    SetPlayerState PLAYER_REQUEST_STATE_HEALING
     ChangePlayerState
-    ApplyMovement LOCALID_PLAYER, _02EC
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerGiveMovement
     WaitMovement
-    ScrCmd_2BE VAR_RESULT
-    CallIfGe VAR_RESULT, 4, _01BC
-    CallIfLt VAR_RESULT, 4, _01B7
-    Call _01C1
-    GoToIfUnset FLAG_UNK_0x006A, _0242
-    GoTo _01E1
+    TrainerCardLevel VAR_RESULT
+    CallIfGe VAR_RESULT, TRAINER_CARD_LEVEL_GOLD, Common_PokecenterTakeYourPokemonGoldCard
+    CallIfLt VAR_RESULT, TRAINER_CARD_LEVEL_GOLD, Common_PokecenterTakeYourPokemon
+    Call Common_PokecenterHealPokemon
+    GoToIfUnset FLAG_POKECENTER_FOUND_POKERUS, Common_PokecenterCheckPokerus
+    GoTo Common_PokecenterThankYouForWaiting
 
-_01B7:
-    Message 1
+Common_PokecenterTakeYourPokemon:
+    Message Common_Text_PokecenterTakeYourPokemon
     Return
 
-_01BC:
-    Message 7
+Common_PokecenterTakeYourPokemonGoldCard:
+    Message Common_Text_PokecenterPleaseToTakeYourPokemon
     Return
 
-_01C1:
-    ApplyMovement VAR_0x8007, _1260
+Common_PokecenterHealPokemon:
+    ApplyMovement VAR_0x8007, Common_PokecenterTurnToMachineMovement
     WaitMovement
     GetPartyCountHatched VAR_0x8006
-    ScrCmd_23B VAR_0x8006
-    ApplyMovement VAR_0x8007, _1278
+    PlayPokecenterAnimation VAR_0x8006
+    ApplyMovement VAR_0x8007, Common_PokecenterTurnToPlayerMovement
     WaitMovement
     HealParty
     Return
 
-_01E1:
-    GoToIfEq VAR_0x8004, 1, _0218
-    Message 2
-    ApplyMovement LOCALID_PLAYER, _02F4
+Common_PokecenterThankYouForWaiting:
+    GoToIfEq VAR_0x8004, TIMEOFDAY_DAY, Common_PokecenterThankYouForWaitingDay
+    Message Common_Text_PokecenterRestoredYourPokemon
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerReceiveMovement
     WaitMovement
-    SetPlayerState 1
+    SetPlayerState PLAYER_REQUEST_STATE_WALKING
     ChangePlayerState
-    ApplyMovement VAR_0x8007, _02E0
+    ApplyMovement VAR_0x8007, Common_PokecenterNurseBowMovement
     WaitMovement
-    Message 3
+    Message Common_Text_PokecenterHopeToSeeYouAgain1
     WaitABXPadPress
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_0218:
-    Message 8
-    ApplyMovement LOCALID_PLAYER, _02F4
+Common_PokecenterThankYouForWaitingDay:
+    Message Common_Text_PokecenterThankYouForWaiting
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerReceiveMovement
     WaitMovement
-    SetPlayerState 1
+    SetPlayerState PLAYER_REQUEST_STATE_WALKING
     ChangePlayerState
-    ApplyMovement VAR_0x8007, _02E0
+    ApplyMovement VAR_0x8007, Common_PokecenterNurseBowMovement
     WaitMovement
-    Message 9
+    Message Common_Text_PokecenterHopeToSeeYouAgain2
     WaitABXPadPress
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_0242:
+Common_PokecenterCheckPokerus:
     CheckPartyPokerus VAR_0x8006
-    GoToIfEq VAR_0x8006, 1, _0259
-    GoTo _01E1
+    GoToIfEq VAR_0x8006, TRUE, Common_PokecenterFoundPokerus
+    GoTo Common_PokecenterThankYouForWaiting
 
-_0259:
-    SetFlag FLAG_UNK_0x006A
-    ApplyMovement LOCALID_PLAYER, _02F4
+Common_PokecenterFoundPokerus:
+    SetFlag FLAG_POKECENTER_FOUND_POKERUS
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerReceiveMovement
     WaitMovement
-    SetPlayerState 1
+    SetPlayerState PLAYER_REQUEST_STATE_WALKING
     ChangePlayerState
-    Message 10
+    Message Common_Text_PokecenterYourPokemonMayBeInfected
     WaitABXPadPress
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_027A:
-    GoToIfSet FLAG_UNK_0x0069, _02B0
-    SetFlag FLAG_UNK_0x0069
-    Message 4
+Common_PokecenterVisitGoldCard:
+    GoToIfSet FLAG_POKECENTER_GOLD_TRAINER_CARD_SEEN, Common_PokecenterGreetAndPromptGoldCard
+    SetFlag FLAG_POKECENTER_GOLD_TRAINER_CARD_SEEN
+    Message Common_Text_PokecenterWelcomeInterrupted
     BufferPlayerName 0
-    Message 5
+    Message Common_Text_PokecenterThatTrainerCard
     ShowYesNoMenu VAR_RESULT
-    GoToIfEq VAR_RESULT, MENU_YES, _02D4
-    Message 9
+    GoToIfEq VAR_RESULT, MENU_YES, Common_PokecenterPromptAcceptGoldCard
+    Message Common_Text_PokecenterHopeToSeeYouAgain2
     WaitABXPadPress
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_02B0:
+Common_PokecenterGreetAndPromptGoldCard:
     BufferPlayerName 0
-    Message 6
+    Message Common_Text_PokecenterGreatToSeeYou
     ShowYesNoMenu VAR_RESULT
-    GoToIfEq VAR_RESULT, MENU_YES, _02D4
-    Message 9
+    GoToIfEq VAR_RESULT, MENU_YES, Common_PokecenterPromptAcceptGoldCard
+    Message Common_Text_PokecenterHopeToSeeYouAgain2
     WaitABXPadPress
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_02D4:
-    SetVar VAR_0x8004, 1
-    GoTo _0172
+Common_PokecenterPromptAcceptGoldCard:
+    SetVar VAR_0x8004, TIMEOFDAY_DAY
+    GoTo Common_PokecenterPromptAccept
 
     .balign 4, 0
-_02E0:
+Common_PokecenterNurseBowMovement:
     NurseJoyBow
     Delay4
     EndMovement
 
     .balign 4, 0
-_02EC:
+Common_PokecenterPlayerGiveMovement:
     PlayerGive
     EndMovement
 
     .balign 4, 0
-_02F4:
+Common_PokecenterPlayerReceiveMovement:
     PlayerReceive
     EndMovement
 
@@ -1178,21 +1181,21 @@ Common_Script_Unk_15:
     LockAll
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
-    SetPlayerState 0x100
+    SetPlayerState PLAYER_REQUEST_STATE_HEALING
     ChangePlayerState
-    ApplyMovement LOCALID_PLAYER, _02EC
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerGiveMovement
     WaitMovement
     Message 43
     Call _10C7
-    Call _01C1
+    Call Common_PokecenterHealPokemon
     CheckBadgeAcquired BADGE_ID_COAL, VAR_RESULT
     GoToIfEq VAR_RESULT, 1, _10A2
     Message 44
-    ApplyMovement LOCALID_PLAYER, _02F4
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerReceiveMovement
     WaitMovement
-    SetPlayerState 1
+    SetPlayerState PLAYER_REQUEST_STATE_WALKING
     ChangePlayerState
-    ApplyMovement VAR_0x8007, _02E0
+    ApplyMovement VAR_0x8007, Common_PokecenterNurseBowMovement
     WaitMovement
     Message 45
     WaitABXPadPress
@@ -1201,11 +1204,11 @@ Common_Script_Unk_15:
     End
 
 _10A2:
-    ApplyMovement LOCALID_PLAYER, _02F4
+    ApplyMovement LOCALID_PLAYER, Common_PokecenterPlayerReceiveMovement
     WaitMovement
-    SetPlayerState 1
+    SetPlayerState PLAYER_REQUEST_STATE_WALKING
     ChangePlayerState
-    ApplyMovement VAR_0x8007, _02E0
+    ApplyMovement VAR_0x8007, Common_PokecenterNurseBowMovement
     WaitMovement
     Message 39
     WaitABXPadPress
@@ -1319,7 +1322,7 @@ _1258:
     EndMovement
 
     .balign 4, 0
-_1260:
+Common_PokecenterTurnToMachineMovement:
     FaceWest
     EndMovement
 
@@ -1332,7 +1335,7 @@ Common_UnusedMovement2:
     EndMovement
 
     .balign 4, 0
-_1278:
+Common_PokecenterTurnToPlayerMovement:
     FaceSouth
     EndMovement
 

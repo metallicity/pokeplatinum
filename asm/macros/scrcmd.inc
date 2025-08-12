@@ -3205,9 +3205,9 @@
     .short \partySlot
     .endm
 
-    .macro ScrCmd_23B arg0
+    .macro PlayPokecenterAnimation numPokemon
     .short 571
-    .short \arg0
+    .short \numPokemon
     .endm
 
     .macro ScrCmd_23C arg0, arg1
@@ -3999,9 +3999,9 @@
     .short \level
     .endm
 
-    .macro ScrCmd_2BE arg0
+    .macro TrainerCardLevel destVar
     .short 702
-    .short \arg0
+    .short \destVar
     .endm
 
     .macro ScrCmd_2BF

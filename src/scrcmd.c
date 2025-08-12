@@ -620,7 +620,7 @@ static BOOL ScrCmd_233(ScriptContext *ctx);
 static BOOL ScrCmd_GetDayOfWeek(ScriptContext *ctx);
 static BOOL ScrCmd_239(ScriptContext *ctx);
 static BOOL ScrCmd_GetSpeciesFootprintType(ScriptContext *ctx);
-static BOOL ScrCmd_23B(ScriptContext *ctx);
+static BOOL ScrCmd_PlayPokecenterAnimation(ScriptContext *ctx);
 static BOOL ScrCmd_23C(ScriptContext *ctx);
 static BOOL ScrCmd_23D(ScriptContext *ctx);
 static BOOL ScrCmd_243(ScriptContext *ctx);
@@ -703,7 +703,7 @@ static BOOL ScrCmd_2B6(ScriptContext *ctx);
 static BOOL ResumeOnSelectionOrDisconnect(ScriptContext *ctx);
 static BOOL ScrCmd_ShowUnionRoomMenu(ScriptContext *ctx);
 static BOOL ScrCmd_2BB(ScriptContext *ctx);
-static BOOL ScrCmd_2BE(ScriptContext *ctx);
+static BOOL ScrCmd_TrainerCardLevel(ScriptContext *ctx);
 static BOOL ScrCmd_2BF(ScriptContext *ctx);
 static BOOL ScrCmd_2C1(ScriptContext *ctx);
 static BOOL ScrCmd_2C2(ScriptContext *ctx);
@@ -1341,7 +1341,7 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_238,
     ScrCmd_239,
     ScrCmd_GetSpeciesFootprintType,
-    ScrCmd_23B,
+    ScrCmd_PlayPokecenterAnimation,
     ScrCmd_23C,
     ScrCmd_23D,
     ScrCmd_MysteryGiftGive,
@@ -1472,7 +1472,7 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_2BB,
     ScrCmd_CheckDidNotCapture,
     ScrCmd_StartLegendaryBattle,
-    ScrCmd_2BE,
+    ScrCmd_TrainerCardLevel,
     ScrCmd_2BF,
     ScrCmd_2C0,
     ScrCmd_2C1,
@@ -1959,7 +1959,7 @@ static BOOL ScrCmd_CheckFlagFromVar(ScriptContext *ctx)
     u16 *flagID = ScriptContext_GetVarPointer(ctx);
     u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    *destVar = FieldSystem_CheckFlag(fieldSystem, (*flagID));
+    *destVar = FieldSystem_CheckFlag(fieldSystem, *flagID);
     return FALSE;
 }
 
@@ -4569,10 +4569,10 @@ static BOOL ScrCmd_SetPlayerBike(ScriptContext *ctx)
     if (rideBike == TRUE) {
         Sound_SetSpecialBGM(ctx->fieldSystem, SEQ_BICYCLE);
         Sound_TryFadeOutToBGM(ctx->fieldSystem, SEQ_BICYCLE, 1);
-        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, (1 << 1));
+        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, 1 << 1);
         PlayerAvatar_RequestChangeState(ctx->fieldSystem->playerAvatar);
     } else {
-        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, (1 << 0));
+        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, 1 << 0);
         PlayerAvatar_RequestChangeState(ctx->fieldSystem->playerAvatar);
         Sound_SetSpecialBGM(ctx->fieldSystem, SEQ_NONE);
         Sound_TryFadeOutToBGM(ctx->fieldSystem, Sound_GetOverrideBGM(ctx->fieldSystem, ctx->fieldSystem->location->mapId), 1);
@@ -6386,7 +6386,7 @@ static BOOL ScrCmd_GetSpeciesFootprintType(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_23B(ScriptContext *ctx)
+static BOOL ScrCmd_PlayPokecenterAnimation(ScriptContext *ctx)
 {
     u16 v0 = ScriptContext_GetVar(ctx);
 
@@ -7379,12 +7379,12 @@ static BOOL ScrCmd_2B6(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_2BE(ScriptContext *ctx)
+static BOOL ScrCmd_TrainerCardLevel(ScriptContext *ctx)
 {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 *v1 = ScriptContext_GetVarPointer(ctx);
+    u16 *starsDestVar = ScriptContext_GetVarPointer(ctx);
 
-    *v1 = TrainerCard_CalculateStars(fieldSystem);
+    *starsDestVar = TrainerCard_CalculateStars(fieldSystem);
     return FALSE;
 }
 

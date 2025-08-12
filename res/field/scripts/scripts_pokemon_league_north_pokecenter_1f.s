@@ -272,7 +272,7 @@ _0323:
 
 _0336:
     SetVar VAR_0x8007, 3
-    CallCommonScript COMMON_SCRIPT_UNK_02
+    CallCommonScript COMMON_SCRIPT_POKECENTER_VISIT
     End
 
     .balign 4, 0
