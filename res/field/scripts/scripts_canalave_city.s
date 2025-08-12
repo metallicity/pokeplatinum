@@ -149,7 +149,7 @@ _028A:
     AddObject 11
     ApplyMovement 11, _0340
     WaitMovement
-    CallCommonScript 0x7FA
+    CallCommonScript COMMON_SCRIPT_UNK_2A
     ApplyMovement 11, _0354
     WaitMovement
     BufferRivalName 0

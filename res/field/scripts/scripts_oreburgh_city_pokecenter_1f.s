@@ -13,7 +13,7 @@
 
 _001E:
     SetVar VAR_0x8007, 3
-    CallCommonScript 0x7D2
+    CallCommonScript COMMON_SCRIPT_UNK_02
     End
 
 _002A:

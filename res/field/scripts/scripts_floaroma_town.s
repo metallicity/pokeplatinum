@@ -135,7 +135,7 @@ _0141:
     Message 9
     SetVar VAR_0x8004, 0x1D2
     SetVar VAR_0x8005, 1
-    CallCommonScript 0x7E0
+    CallCommonScript COMMON_SCRIPT_UNK_10
     CloseMessage
     ReleaseAll
     End

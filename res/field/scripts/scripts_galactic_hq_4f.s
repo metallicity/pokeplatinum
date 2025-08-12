@@ -56,7 +56,7 @@ _0074:
     End
 
 _00DB:
-    CallCommonScript 0x7FC
+    CallCommonScript COMMON_SCRIPT_UNK_2C
     Return
 
 _00E1:

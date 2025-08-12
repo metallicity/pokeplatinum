@@ -19,7 +19,7 @@ _001A:
     Message 1
     SetVar VAR_0x8004, 0x1B5
     SetVar VAR_0x8005, 1
-    CallCommonScript 0x7FC
+    CallCommonScript COMMON_SCRIPT_UNK_2C
     GoTo _0046
     End
 
@@ -175,14 +175,14 @@ _0277:
     ScrCmd_31D VAR_RESULT
     GoToIfEq VAR_RESULT, 0xFF, _02A9
     HealParty
-    CallCommonScript 0x7D6
+    CallCommonScript COMMON_SCRIPT_UNK_06
     SetVar VAR_RESULT, VAR_MAP_LOCAL_0
     GoToIfEq VAR_RESULT, 1, _02AF
     GoTo _026C
     End
 
 _02A9:
-    CallCommonScript 0x809
+    CallCommonScript COMMON_SCRIPT_UNK_39
     End
 
 _02AF:
@@ -385,7 +385,7 @@ _051B:
 
 _0526:
     HealParty
-    CallCommonScript 0x7D6
+    CallCommonScript COMMON_SCRIPT_UNK_06
     SetVar VAR_RESULT, VAR_MAP_LOCAL_0
     GoToIfEq VAR_RESULT, 0, _0508
     Message 19

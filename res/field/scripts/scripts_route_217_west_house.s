@@ -30,12 +30,12 @@ _0044:
     SetVar VAR_0x8004, ITEM_ICICLE_PLATE
     SetVar VAR_0x8005, 1
     GoToIfCannotFitItem VAR_0x8004, VAR_0x8005, VAR_RESULT, _0076
-    CallCommonScript 0x7FC
+    CallCommonScript COMMON_SCRIPT_UNK_2C
     SetFlag FLAG_UNK_0x00DE
     GoTo _0039
 
 _0076:
-    CallCommonScript 0x7E1
+    CallCommonScript COMMON_SCRIPT_UNK_11
     CloseMessage
     ReleaseAll
     End
