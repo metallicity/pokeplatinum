@@ -1,4 +1,4 @@
-HandleSignpostInput = 2000
+CommonScript_HandleSignpostInput = 2000
 CommonScript_Unk01
 CommonScript_Unk02
 CommonScript_Unk03
@@ -56,3 +56,7 @@ CommonScript_Unk36
 CommonScript_Unk37
 CommonScript_Unk29_4
 CommonScript_Unk39
+PokedexCommon_CheckRowan = 9950
+PokedexCommon_CheckPC
+PokedexCommon_CheckOak
+PokedexCommon_CheckNationalDex

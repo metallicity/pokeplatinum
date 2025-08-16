@@ -51,7 +51,7 @@ _00AF:
 _00B7:
     GetNationalDexEnabled VAR_RESULT
     GoToIfEq VAR_RESULT, 1, _07AE
-    GoToIfUnset FLAG_UNK_0x09BA, _00E5
+    GoToIfUnset FLAG_FIRST_ARRIVAL_ETERNA_CITY, _00E5
     CheckLocalDexCompleted VAR_RESULT
     GoToIfEq VAR_RESULT, 1, _060E
 _00E5:
@@ -64,7 +64,7 @@ _00E5:
     End
 
 _0100:
-    CallCommonScript 0x26DE
+    CallCommonScript PokedexCommon_CheckRowan
     End
 
 _0106:
@@ -101,7 +101,7 @@ _015C:
     End
 
 _016A:
-    ScrCmd_11E VAR_RESULT
+    PokedexSeenLocalCount VAR_RESULT
     BufferNumber 1, VAR_RESULT
     Message 54
     WaitABXPadPress
@@ -508,7 +508,7 @@ _05FD:
     End
 
 _060E:
-    GoToIfSet FLAG_UNK_0x0110, _0621
+    GoToIfSet FLAG_COMPLETE_LOCAL_DEX_RATING, _0621
     GoTo _0631
     End
 
@@ -535,7 +535,7 @@ _0650:
     End
 
 _065B:
-    ScrCmd_11E VAR_RESULT
+    PokedexSeenLocalCount VAR_RESULT
     BufferNumber 0, VAR_RESULT
     Message 28
     BufferPlayerName 0

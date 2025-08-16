@@ -30,7 +30,7 @@ _0006:
     End
 
 _008B:
-    CallCommonScript 0x26E0
+    CallCommonScript PokedexCommon_CheckOak
     End
 
 _0091:
@@ -74,11 +74,11 @@ _00FB:
 _0106:
     Message 5
     SetFlag FLAG_UNK_0x0098
-    CallCommonScript 0x26E1
+    CallCommonScript PokedexCommon_CheckNationalDex
     End
 
 _0113:
-    CallCommonScript 0x26E0
+    CallCommonScript PokedexCommon_CheckOak
     End
 
 _0119:

@@ -154,11 +154,11 @@
     .endm
 
     .macro CommonScriptEntry scriptName
-    ScriptEntry Common_\scriptName
+    ScriptEntry CommonScript_Label_\scriptName
     .endm
 
-    .macro DefCommon scriptName
-    Common_\scriptName
+    .macro DefCommonScript scriptName
+    CommonScript_Label_\scriptName
     .endm
 
     .macro ReturnCommonScript
@@ -335,7 +335,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     GetSignpostInput VAR_RESULT
-    CallCommonScript HandleSignpostInput
+    CallCommonScript CommonScript_HandleSignpostInput
     .endm
 
     .macro ShowArrowSign messageID
@@ -343,7 +343,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     GetSignpostInput VAR_RESULT
-    CallCommonScript HandleSignpostInput
+    CallCommonScript CommonScript_HandleSignpostInput
     .endm
 
     .macro ShowLandmarkSign messageID
@@ -351,7 +351,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     GetSignpostInput VAR_RESULT
-    CallCommonScript HandleSignpostInput
+    CallCommonScript CommonScript_HandleSignpostInput
     .endm
 
     .macro ShowScrollingSign messageID
@@ -359,7 +359,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     DrawSignpostScrollingMessage \messageID, VAR_RESULT
-    CallCommonScript HandleSignpostInput
+    CallCommonScript CommonScript_HandleSignpostInput
     .endm
 
     .macro DrawSignpostInstantMessage messageID, signpostType, signpostNARCMemberIdx=0, unused=VAR_RESULT
@@ -1673,9 +1673,9 @@
     .short \destVarID    /* unused */
     .endm
 
-    .macro ScrCmd_11E arg0
+    .macro PokedexSeenLocalCount destVar
     .short 286
-    .short \arg0
+    .short \destVar
     .endm
 
     .macro ScrCmd_Unused_11F arg0
@@ -1688,19 +1688,19 @@
     .short \arg0
     .endm
 
-    .macro ScrCmd_121 arg0
+    .macro PokedexCaughtNationalCount destVar
     .short 289
-    .short \arg0
+    .short \destVar
     .endm
 
     .macro ScrCmd_Unused_122
     .short 290
     .endm
 
-    .macro ScrCmd_123 arg0, arg1
+    .macro LoadPokedexRating nationalDex, destVar
     .short 291
-    .byte \arg0
-    .short \arg1
+    .byte \nationalDex
+    .short \destVar
     .endm
 
     .macro StartWildBattle species, level

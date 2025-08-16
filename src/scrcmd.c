@@ -317,7 +317,7 @@ static BOOL WaitForSignpostDone(ScriptContext *ctx);
 static BOOL ScrCmd_DrawSignpostScrollingMessage(ScriptContext *ctx);
 static BOOL WaitScrollingSignpostInput(ScriptContext *ctx);
 static BOOL ScrCmd_GetSignpostInput(ScriptContext *ctx);
-static BOOL HandleSignpostInput(ScriptContext *ctx);
+static BOOL ScriptContext_HandleSignpostInput(ScriptContext *ctx);
 static BOOL ScrCmd_ShowStartMenu(ScriptContext *ctx);
 static BOOL ScriptContext_ScrollBG3(ScriptContext *ctx);
 static BOOL ScrCmd_ScrollBG3(ScriptContext *ctx);
@@ -439,12 +439,12 @@ static BOOL ScrCmd_Unused_0F7(ScriptContext *ctx);
 static BOOL ScrCmd_11B(ScriptContext *ctx);
 static BOOL ScrCmd_GetFloorsAbove(ScriptContext *ctx);
 static BOOL ScrCmd_ShowCurrentFloor(ScriptContext *ctx);
-static BOOL ScrCmd_11E(ScriptContext *ctx);
+static BOOL ScrCmd_PokedexSeenLocalCount(ScriptContext *ctx);
 static BOOL ScrCmd_Unused_11F(ScriptContext *ctx);
 static BOOL ScrCmd_120(ScriptContext *ctx);
-static BOOL ScrCmd_121(ScriptContext *ctx);
+static BOOL ScrCmd_PokedexCaughtNationalCount(ScriptContext *ctx);
 static BOOL ScrCmd_Unused_122(ScriptContext *ctx);
-static BOOL ScrCmd_123(ScriptContext *ctx);
+static BOOL ScrCmd_LoadPokedexRating(ScriptContext *ctx);
 static BOOL ScrCmd_StartWildBattle(ScriptContext *ctx);
 static BOOL ScrCmd_StartLegendaryBattle(ScriptContext *ctx);
 static BOOL ScrCmd_StartFatefulEncounter(ScriptContext *ctx);
@@ -1056,12 +1056,12 @@ const ScrCmdFunc Unk_020EAC58[] = {
     ScrCmd_11B,
     ScrCmd_GetFloorsAbove,
     ScrCmd_ShowCurrentFloor,
-    ScrCmd_11E,
+    ScrCmd_PokedexSeenLocalCount,
     ScrCmd_Unused_11F,
     ScrCmd_120,
-    ScrCmd_121,
+    ScrCmd_PokedexCaughtNationalCount,
     ScrCmd_Unused_122,
-    ScrCmd_123,
+    ScrCmd_LoadPokedexRating,
     ScrCmd_StartWildBattle,
     ScrCmd_StartFirstBattle,
     ScrCmd_StartCatchingTutorial,
@@ -1959,7 +1959,7 @@ static BOOL ScrCmd_CheckFlagFromVar(ScriptContext *ctx)
     u16 *flagID = ScriptContext_GetVarPointer(ctx);
     u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    *destVar = FieldSystem_CheckFlag(fieldSystem, (*flagID));
+    *destVar = FieldSystem_CheckFlag(fieldSystem, *flagID);
     return FALSE;
 }
 
@@ -2546,12 +2546,12 @@ static BOOL ScrCmd_GetSignpostInput(ScriptContext *ctx)
     u16 destVarID = ScriptContext_ReadHalfWord(ctx);
 
     ctx->data[0] = destVarID;
-    ScriptContext_Pause(ctx, HandleSignpostInput);
+    ScriptContext_Pause(ctx, ScriptContext_HandleSignpostInput);
 
     return TRUE;
 }
 
-static BOOL HandleSignpostInput(ScriptContext *ctx)
+static BOOL ScriptContext_HandleSignpostInput(ScriptContext *ctx)
 {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *destVar = FieldSystem_GetVarPointer(fieldSystem, ctx->data[0]);
@@ -4569,10 +4569,10 @@ static BOOL ScrCmd_SetPlayerBike(ScriptContext *ctx)
     if (rideBike == TRUE) {
         Sound_SetSpecialBGM(ctx->fieldSystem, SEQ_BICYCLE);
         Sound_TryFadeOutToBGM(ctx->fieldSystem, SEQ_BICYCLE, 1);
-        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, (1 << 1));
+        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, 1 << 1);
         PlayerAvatar_RequestChangeState(ctx->fieldSystem->playerAvatar);
     } else {
-        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, (1 << 0));
+        PlayerAvatar_SetRequestStateBit(ctx->fieldSystem->playerAvatar, 1 << 0);
         PlayerAvatar_RequestChangeState(ctx->fieldSystem->playerAvatar);
         Sound_SetSpecialBGM(ctx->fieldSystem, SEQ_NONE);
         Sound_TryFadeOutToBGM(ctx->fieldSystem, Sound_GetOverrideBGM(ctx->fieldSystem, ctx->fieldSystem->location->mapId), 1);
@@ -4784,12 +4784,12 @@ static BOOL ScrCmd_ShowCurrentFloor(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_11E(ScriptContext *ctx)
+static BOOL ScrCmd_PokedexSeenLocalCount(ScriptContext *ctx)
 {
-    const Pokedex *v0 = SaveData_GetPokedex(ctx->fieldSystem->saveData);
-    u16 *v1 = ScriptContext_GetVarPointer(ctx);
+    const Pokedex *pokedex = SaveData_GetPokedex(ctx->fieldSystem->saveData);
+    u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    *v1 = Pokedex_CountSeen_Local(v0);
+    *destVar = Pokedex_CountSeen_Local(pokedex);
     return FALSE;
 }
 
@@ -4811,12 +4811,12 @@ static BOOL ScrCmd_120(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_121(ScriptContext *ctx)
+static BOOL ScrCmd_PokedexCaughtNationalCount(ScriptContext *ctx)
 {
-    const Pokedex *v0 = SaveData_GetPokedex(ctx->fieldSystem->saveData);
-    u16 *v1 = ScriptContext_GetVarPointer(ctx);
+    const Pokedex *pokedex = SaveData_GetPokedex(ctx->fieldSystem->saveData);
+    u16 *destVar = ScriptContext_GetVarPointer(ctx);
 
-    *v1 = Pokedex_CountCaught_National(v0);
+    *destVar = Pokedex_CountCaught_National(pokedex);
     return FALSE;
 }
 
@@ -4827,20 +4827,20 @@ static BOOL ScrCmd_Unused_122(ScriptContext *ctx)
     return FALSE;
 }
 
-static BOOL ScrCmd_123(ScriptContext *ctx)
+static BOOL ScrCmd_LoadPokedexRating(ScriptContext *ctx)
 {
-    const Pokedex *v0 = SaveData_GetPokedex(ctx->fieldSystem->saveData);
-    const TrainerInfo *v1 = SaveData_GetTrainerInfo(ctx->fieldSystem->saveData);
-    u8 v2 = ScriptContext_ReadByte(ctx);
-    u16 *v3 = ScriptContext_GetVarPointer(ctx);
-    u16 v4;
+    const Pokedex *pokedex = SaveData_GetPokedex(ctx->fieldSystem->saveData);
+    const TrainerInfo *player = SaveData_GetTrainerInfo(ctx->fieldSystem->saveData);
+    u8 nationalDex = ScriptContext_ReadByte(ctx);
+    u16 *destVar = ScriptContext_GetVarPointer(ctx);
+    u16 pokemonCount;
 
-    if (v2 == 0) {
-        v4 = Pokedex_NumCaught_Local(v0);
-        *v3 = sub_0205E078(v4, SystemFlag_HandleFirstArrivalToZone(SaveData_GetVarsFlags(ctx->fieldSystem->saveData), HANDLE_FLAG_CHECK, FIRST_ARRIVAL_ETERNA_CITY));
+    if (nationalDex == FALSE) {
+        pokemonCount = Pokedex_NumCaught_Local(pokedex);
+        *destVar = Pokedex_GetRatingMessageID_Local(pokemonCount, SystemFlag_HandleFirstArrivalToZone(SaveData_GetVarsFlags(ctx->fieldSystem->saveData), HANDLE_FLAG_CHECK, FIRST_ARRIVAL_ETERNA_CITY));
     } else {
-        v4 = Pokedex_NumCaught_National(v0);
-        *v3 = sub_0205E0E4(v4, TrainerInfo_Gender(v1));
+        pokemonCount = Pokedex_NumCaught_National(pokedex);
+        *destVar = Pokedex_GetRatingMessageID_National(pokemonCount, TrainerInfo_Gender(player));
     }
 
     return FALSE;
