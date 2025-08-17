@@ -485,22 +485,22 @@ static void TrainerCard_LoadCardPalette(u8 stars, u8 pokedexObtained, NARC *narc
     if (pokedexObtained) {
         switch (stars) {
         case TRAINER_CARD_LEVEL_NORMAL:
-            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, TRAINER_CARD_LEVEL_NORMAL, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
+            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, 0, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
             break;
         case TRAINER_CARD_LEVEL_COBALT:
-            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, TRAINER_CARD_LEVEL_COBALT, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
+            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, 1, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
             break;
         case TRAINER_CARD_LEVEL_BRONZE:
-            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, TRAINER_CARD_LEVEL_BRONZE, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
+            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, 2, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
             break;
         case TRAINER_CARD_LEVEL_SILVER:
-            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, TRAINER_CARD_LEVEL_SILVER, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
+            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, 3, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
             break;
         case TRAINER_CARD_LEVEL_GOLD:
-            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, TRAINER_CARD_LEVEL_GOLD, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
+            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, 4, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
             break;
         case TRAINER_CARD_LEVEL_BLACK:
-            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, TRAINER_CARD_LEVEL_BLACK, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
+            nclrBuffer = Graphics_GetPlttDataFromOpenNARC(narc, 5, &paletteData, HEAP_ID_TRAINER_CARD_SCREEN);
             break;
         }
     } else {

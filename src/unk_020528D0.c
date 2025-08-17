@@ -244,8 +244,7 @@ BOOL FieldTask_BlackOutFromBattle(FieldTask *task)
     case 5:
         BrightnessController_SetScreenBrightness(0, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD, BRIGHTNESS_BOTH_SCREENS);
 
-        if (FieldOverworldState_GetDefaultWarpID()
-            == FieldOverworldState_GetWarpId(SaveData_GetFieldOverworldState(fieldSystem->saveData))) {
+        if (FieldOverworldState_GetDefaultWarpID() == FieldOverworldState_GetWarpId(SaveData_GetFieldOverworldState(fieldSystem->saveData))) {
             ScriptManager_Start(task, COMMON_SCRIPT_HOME_BLACK_OUT_RECOVER, NULL, NULL);
         } else {
             ScriptManager_Start(task, COMMON_SCRIPT_POKECENTER_BLACK_OUT_RECOVER, NULL, NULL);
