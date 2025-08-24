@@ -201,9 +201,9 @@ static u16 ScriptContext_LoadAndOffsetID(FieldSystem *fieldSystem, ScriptContext
     } else if (retScriptID >= 10450) {
         ScriptContext_Load(fieldSystem, ctx, scripts_unk_0500, TEXT_BANK_UNK_0016);
         retScriptID -= 10450;
-    } else if (retScriptID >= SCRIPT_ID_POKEMON_CENTER_DAILY_TRAINERS) {
+    } else if (retScriptID >= SCRIPT_ID_OFFSET_POKEMON_CENTER_DAILY_TRAINERS) {
         ScriptContext_Load(fieldSystem, ctx, scripts_pokemon_center_daily_trainers, TEXT_BANK_POKEMON_CENTER_DAILY_TRAINERS);
-        retScriptID -= SCRIPT_ID_POKEMON_CENTER_DAILY_TRAINERS;
+        retScriptID -= SCRIPT_ID_OFFSET_POKEMON_CENTER_DAILY_TRAINERS;
     } else if (retScriptID >= 10300) {
         ScriptContext_Load(fieldSystem, ctx, scripts_unk_1051, TEXT_BANK_UNK_0552);
         retScriptID -= 10300;
@@ -219,9 +219,9 @@ static u16 ScriptContext_LoadAndOffsetID(FieldSystem *fieldSystem, ScriptContext
     } else if (retScriptID >= SCRIPT_ID_OFFSET_FIELD_MOVES) {
         ScriptContext_Load(fieldSystem, ctx, scripts_field_moves, TEXT_BANK_FIELD_MOVES);
         retScriptID -= SCRIPT_ID_OFFSET_FIELD_MOVES;
-    } else if (retScriptID >= 9950) {
+    } else if (retScriptID >= SCRIPT_ID_OFFSET_POKEDEX_RATING) {
         ScriptContext_Load(fieldSystem, ctx, scripts_unk_0411, TEXT_BANK_UNK_0383);
-        retScriptID -= 9950;
+        retScriptID -= SCRIPT_ID_OFFSET_POKEDEX_RATING;
     } else if (retScriptID >= 9900) {
         ScriptContext_Load(fieldSystem, ctx, scripts_unk_0397, TEXT_BANK_COMMON_STRINGS);
         retScriptID -= 9900;

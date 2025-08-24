@@ -1,6 +1,8 @@
 #ifndef POKEPLATINUM_SCRIPT_MANAGER_H
 #define POKEPLATINUM_SCRIPT_MANAGER_H
 
+#include "generated/script_id_offsets.h";
+
 #include "struct_decls/struct_02061AB4_decl.h"
 
 #include "field/field_system_decl.h"
@@ -84,16 +86,7 @@ enum ScriptContextType {
     NUM_SCRIPT_CONTEXTS
 };
 
-#define SCRIPT_ID(chunk, id)                    ((SCRIPT_ID_OFFSET_##chunk) + id)
-#define SCRIPT_ID_OFFSET_COMMON_SCRIPTS         2000
-#define SCRIPT_ID_OFFSET_SINGLE_BATTLES         3000
-#define SCRIPT_ID_OFFSET_DOUBLE_BATTLES         5000
-#define SCRIPT_ID_OFFSET_HIDDEN_ITEMS           8000
-#define SCRIPT_ID_OFFSET_SAFARI_ZONE            8800
-#define SCRIPT_ID_OFFSET_INIT_NEW_GAME          9600
-#define SCRIPT_ID_OFFSET_FOLLOWER_PARTNERS      9700
-#define SCRIPT_ID_OFFSET_FIELD_MOVES            10000
-#define SCRIPT_ID_POKEMON_CENTER_DAILY_TRAINERS 10400
+#define SCRIPT_ID(chunk, id) ((SCRIPT_ID_OFFSET_##chunk) + id)
 
 #define FLAG_OFFSET_HIDDEN_ITEMS     730
 #define FLAG_OFFSET_TRAINER_DEFEATED 1360

@@ -4918,6 +4918,14 @@
     .short 0xFD13
     .endm
 
+    .macro ExternalScriptEntry scriptID
+    ScriptEntry ExternalScript_Label_\scriptID
+    .endm
+
+    .macro ExternalScriptLabel scriptID
+    ExternalScript_Label_\scriptID
+    .endm
+
     .macro GoToIfCannotFitItem item, count, destVarID, offset
     CanFitItem \item, \count, \destVarID
     GoToIfEq \destVarID, FALSE, \offset

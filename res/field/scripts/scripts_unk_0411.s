@@ -2,13 +2,13 @@
 #include "res/text/bank/unk_0383.h"
 
 
-    ScriptEntry _0012
-    ScriptEntry _00AB
-    ScriptEntry _004C
-    ScriptEntry _009D
+    ExternalScriptEntry PokedexRating_CheckRowan
+    ExternalScriptEntry PokedexRating_CheckPC
+    ExternalScriptEntry PokedexRating_CheckOak
+    ExternalScriptEntry PokedexRating_CheckNationalDex
     ScriptEntryEnd
 
-_0012:
+ExternalScriptLabel PokedexRating_CheckRowan:
     BufferPlayerName 0
     Message 0
     ShowYesNoMenu VAR_RESULT
@@ -31,14 +31,14 @@ _003E:
     ReturnCommonScript
     End
 
-_004C:
+ExternalScriptLabel PokedexRating_CheckOak:
     BufferPlayerName 0
     GetPlayerGender VAR_RESULT
     CallIfEq VAR_RESULT, GENDER_MALE, _0086
     CallIfEq VAR_RESULT, GENDER_FEMALE, _008B
     ShowYesNoMenu VAR_RESULT
     GoToIfEq VAR_RESULT, MENU_NO, _0090
-    GoTo _009D
+    GoTo PokedexRating_CheckNationalDex_Local
     End
 
 _0086:
@@ -57,14 +57,15 @@ _0090:
     ReturnCommonScript
     End
 
-_009D:
+ExternalScriptLabel PokedexRating_CheckNationalDex:
+PokedexRating_CheckNationalDex_Local:
     Call _0126
     CloseMessage
     ReleaseAll
     ReturnCommonScript
     End
 
-_00AB:
+ExternalScriptLabel PokedexRating_CheckPC:
     Call _00B5
     ReturnCommonScript
     End
