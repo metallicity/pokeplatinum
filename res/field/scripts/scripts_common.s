@@ -3,6 +3,7 @@
 #include "generated/tutor_locations.h"
 #include "res/text/bank/common_strings.h"
 #include "res/text/bank/menu_entries.h"
+#include "constants/test_constant.h"
 
     ScriptEntry Common_HandleSignpostInput
     ScriptEntry _034C
