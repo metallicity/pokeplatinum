@@ -32,6 +32,7 @@
 #include "constants/savedata/vars_flags.h"
 #include "constants/scrcmd.h"
 #include "constants/battle.h"
+#include "res/field/scripts/scripts_common.h"
 
 #include "macros/movement.inc"
 
@@ -328,7 +329,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     GetSignpostInput VAR_RESULT
-    CallCommonScript 0x7D0
+    CallCommonScript (2000 + Common_HandleSignpostInput)
     .endm
 
     .macro ShowArrowSign messageID
@@ -336,7 +337,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     GetSignpostInput VAR_RESULT
-    CallCommonScript 0x7D0
+    CallCommonScript (2000 + Common_HandleSignpostInput)
     .endm
 
     .macro ShowLandmarkSign messageID
@@ -344,7 +345,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     GetSignpostInput VAR_RESULT
-    CallCommonScript 0x7D0
+    CallCommonScript (2000 + Common_HandleSignpostInput)
     .endm
 
     .macro ShowScrollingSign messageID
@@ -352,7 +353,7 @@
     SetSignpostCommand SIGNPOST_CMD_SCROLL_IN
     WaitForSignpostDone
     DrawSignpostScrollingMessage \messageID, VAR_RESULT
-    CallCommonScript 0x7D0
+    CallCommonScript (2000 + Common_HandleSignpostInput)
     .endm
 
     .macro DrawSignpostInstantMessage messageID, signpostType, signpostNARCMemberIdx=0, unused=VAR_RESULT
