@@ -5,72 +5,72 @@
 #include "res/text/bank/menu_entries.h"
 
     ScriptEntry Common_HandleSignpostInput
-    ScriptEntry _034C
-    ScriptEntry _00EE
-    ScriptEntry _03E8
-    ScriptEntry _043B
-    ScriptEntry _0479
-    ScriptEntry CommonScript_SaveGame @ 0x7D6
-    ScriptEntry _00EC
-    ScriptEntry _05EA
-    ScriptEntry _0719
-    ScriptEntry _00EA
-    ScriptEntry _08FF
-    ScriptEntry _0901
-    ScriptEntry _093A
-    ScriptEntry _095C
-    ScriptEntry _0983
-    ScriptEntry _09F5
-    ScriptEntry _0BDD
-    ScriptEntry _0BEE
-    ScriptEntry _0FC3
-    ScriptEntry _0FCA
-    ScriptEntry _103A
-    ScriptEntry _0FA5
-    ScriptEntry _0FA7
-    ScriptEntry _1280
-    ScriptEntry _1282
-    ScriptEntry _12A8
-    ScriptEntry _12BA
-    ScriptEntry _12CD
-    ScriptEntry _12E0
-    ScriptEntry _12F3
-    ScriptEntry _1361
-    ScriptEntry _138C
-    ScriptEntry _139D
-    ScriptEntry _048B
-    ScriptEntry _13AB
-    ScriptEntry _09BD
-    ScriptEntry _1475
-    ScriptEntry _13BE
-    ScriptEntry _1477
-    ScriptEntry _1581
-    ScriptEntry _15D7
-    ScriptEntry _15B3
-    ScriptEntry _15D7
-    ScriptEntry _0A34
-    ScriptEntry _09CC
-    ScriptEntry _0910
-    ScriptEntry _0992
-    ScriptEntry _15BF
-    ScriptEntry _15D7
-    ScriptEntry _15E7
-    ScriptEntry _1636
-    ScriptEntry _164A
-    ScriptEntry _165E
-    ScriptEntry _16AA
-    ScriptEntry _15CB
-    ScriptEntry _15D7
-    ScriptEntry _170A
+    ScriptEntry Common_034C
+    ScriptEntry Common_00EE
+    ScriptEntry Common_03E8
+    ScriptEntry Common_043B
+    ScriptEntry Common_0479
+    ScriptEntry Common_SaveGame
+    ScriptEntry Common_00EC
+    ScriptEntry Common_05EA
+    ScriptEntry Common_0719
+    ScriptEntry Common_00EA
+    ScriptEntry Common_08FF
+    ScriptEntry Common_0901
+    ScriptEntry Common_Unk_013
+    ScriptEntry Common_095C
+    ScriptEntry Common_0983
+    ScriptEntry Common_09F5
+    ScriptEntry Common_0BDD
+    ScriptEntry Common_0BEE
+    ScriptEntry Common_0FC3
+    ScriptEntry Common_0FCA
+    ScriptEntry Common_103A
+    ScriptEntry Common_0FA5
+    ScriptEntry Common_0FA7
+    ScriptEntry Common_1280
+    ScriptEntry Common_1282
+    ScriptEntry Common_12A8
+    ScriptEntry Common_12BA
+    ScriptEntry Common_12CD
+    ScriptEntry Common_12E0
+    ScriptEntry Common_12F3
+    ScriptEntry Common_1361
+    ScriptEntry Common_138C
+    ScriptEntry Common_139D
+    ScriptEntry Common_048B
+    ScriptEntry Common_13AB
+    ScriptEntry Common_09BD
+    ScriptEntry Common_1475
+    ScriptEntry Common_13BE
+    ScriptEntry Common_1477
+    ScriptEntry Common_1581
+    ScriptEntry Common_Unk_041
+    ScriptEntry Common_15B3
+    ScriptEntry Common_Unk_041_2
+    ScriptEntry Common_0A34
+    ScriptEntry Common_09CC
+    ScriptEntry Common_0910
+    ScriptEntry Common_0992
+    ScriptEntry Common_15BF
+    ScriptEntry Common_Unk_041_3
+    ScriptEntry Common_15E7
+    ScriptEntry Common_1636
+    ScriptEntry Common_164A
+    ScriptEntry Common_165E
+    ScriptEntry Common_16AA
+    ScriptEntry Common_15CB
+    ScriptEntry Common_Unk_041_4
+    ScriptEntry Common_170A
     ScriptEntryEnd
 
-_00EA:
+Common_00EA:
     End
 
-_00EC:
+Common_00EC:
     End
 
-_00EE:
+Common_00EE:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -248,7 +248,7 @@ Common_RemoveSignpostOpenStartMenu:
     ReturnCommonScript
     End
 
-_034C:
+Common_034C:
     Call _0356
     ReturnCommonScript
     End
@@ -286,7 +286,7 @@ Common_Unused:
     ReturnCommonScript
     End
 
-_03E8:
+Common_03E8:
     LockAll
     GetPartyCount VAR_0x8004
     SetVar VAR_0x8005, 0
@@ -304,7 +304,7 @@ _040F:
     ReleaseAll
     End
 
-_043B:
+Common_043B:
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
     WaitABPress
@@ -324,20 +324,20 @@ _0457:
     ScrCmd_14B
     End
 
-_0479:
+Common_0479:
     ClearFlag FLAG_SAVE_EXTRA_BLOCK
     Call CommonScript_SaveGame_Dialog
     ScrCmd_18F VAR_RESULT
     CloseMessage
     End
 
-_048B:
+Common_048B:
     Message pl_msg_00000213_00020
     WaitABPress
     CloseMessage
     End
 
-CommonScript_SaveGame:
+Common_SaveGame:
     SetFlag FLAG_SAVE_EXTRA_BLOCK
     Call CommonScript_SaveGame_Dialog
     SetVar VAR_MAP_LOCAL_0, VAR_RESULT
@@ -435,7 +435,7 @@ CommonScript_QuickSave_CheckMiscFlag:
     GoTo CommonScript_QuickSave_Save
     End
 
-_05EA:
+Common_05EA:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     CheckItem ITEM_HONEY, 1, VAR_RESULT
@@ -520,7 +520,7 @@ _0713:
     ReleaseAll
     End
 
-_0719:
+Common_0719:
     Call _0723
     ReturnCommonScript
     End
@@ -660,17 +660,17 @@ _08FA:
     Message pl_msg_00000213_00107
     Return
 
-_08FF:
+Common_08FF:
     End
 
-_0901:
+Common_0901:
     Call _091D
     Message pl_msg_00000213_00109
     WaitABXPadPress
     ReturnCommonScript
     End
 
-_0910:
+Common_0910:
     Call _091D
     Message pl_msg_00000213_00128
     ReturnCommonScript
@@ -685,7 +685,7 @@ _091D:
     WaitSound
     Return
 
-_093A:
+Common_Unk_013:
     Call _0944
     ReturnCommonScript
     End
@@ -698,7 +698,7 @@ _0944:
     WaitSound
     Return
 
-_095C:
+Common_095C:
     Call _0966
     ReturnCommonScript
     End
@@ -712,14 +712,14 @@ _0966:
     WaitSound
     Return
 
-_0983:
+Common_0983:
     Call _099F
     Message pl_msg_00000213_00031
     WaitABXPadPress
     ReturnCommonScript
     End
 
-_0992:
+Common_0992:
     Call _099F
     Message pl_msg_00000213_00127
     ReturnCommonScript
@@ -735,14 +735,14 @@ _099F:
     BufferAccessoryName 1, VAR_0x8004
     Return
 
-_09BD:
+Common_09BD:
     Call _09D9
     Message pl_msg_00000213_00031
     WaitABXPadPress
     ReturnCommonScript
     End
 
-_09CC:
+Common_09CC:
     Call _09D9
     Message pl_msg_00000213_00127
     ReturnCommonScript
@@ -758,7 +758,7 @@ _09D9:
     ScrCmd_273 1, VAR_0x8004
     Return
 
-_09F5:
+Common_09F5:
     Call _09FF
     ReturnCommonScript
     End
@@ -773,7 +773,7 @@ _09FF:
     WaitABXPadPress
     Return
 
-_0A34:
+Common_0A34:
     Call _0A3E
     ReturnCommonScript
     End
@@ -871,7 +871,7 @@ _0BCA:
 _0BDB:
     Return
 
-_0BDD:
+Common_0BDD:
     Call _0BE7
     ReturnCommonScript
     End
@@ -881,7 +881,7 @@ _0BE7:
     WaitABXPadPress
     Return
 
-_0BEE:
+Common_0BEE:
     LockAll
     PlayFanfare SEQ_SE_DP_PC_ON
     Call _0C06
@@ -1126,10 +1126,10 @@ _0F94:
     ScrCmd_16A 90
     Return
 
-_0FA5:
+Common_0FA5:
     End
 
-_0FA7:
+Common_0FA7:
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
     OpenSealCapsuleEditor
@@ -1137,12 +1137,12 @@ _0FA7:
     WaitFadeScreen
     End
 
-_0FC3:
+Common_0FC3:
     Message pl_msg_00000213_00037
     ReturnCommonScript
     End
 
-_0FCA:
+Common_0FCA:
     LockAll
     ApplyMovement LOCALID_PLAYER, _1250
     ApplyMovement 0, _1258
@@ -1174,7 +1174,7 @@ _1035:
     Message pl_msg_00000213_00042
     Return
 
-_103A:
+Common_103A:
     LockAll
     FadeScreen 6, 1, 1, 0
     WaitFadeScreen
@@ -1336,10 +1336,10 @@ _1278:
     FaceSouth
     EndMovement
 
-_1280:
+Common_1280:
     End
 
-_1282:
+Common_1282:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FadeScreen 6, 1, 0, 0
@@ -1351,7 +1351,7 @@ _1282:
     ReleaseAll
     End
 
-_12A8:
+Common_12A8:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -1361,7 +1361,7 @@ _12A8:
     ReleaseAll
     End
 
-_12BA:
+Common_12BA:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -1371,7 +1371,7 @@ _12BA:
     ReleaseAll
     End
 
-_12CD:
+Common_12CD:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -1381,7 +1381,7 @@ _12CD:
     ReleaseAll
     End
 
-_12E0:
+Common_12E0:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -1391,7 +1391,7 @@ _12E0:
     ReleaseAll
     End
 
-_12F3:
+Common_12F3:
     CheckItem ITEM_BICYCLE, 1, VAR_RESULT
     GoToIfEq VAR_RESULT, 0, _135F
     LockAll
@@ -1423,7 +1423,7 @@ _1359:
 _135F:
     End
 
-_1361:
+Common_1361:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     Message pl_msg_00000213_00076
@@ -1437,7 +1437,7 @@ _1361:
     ReleaseAll
     End
 
-_138C:
+Common_138C:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     Message pl_msg_00000213_00079
@@ -1446,7 +1446,7 @@ _138C:
     ReleaseAll
     End
 
-_139D:
+Common_139D:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -1454,7 +1454,7 @@ _139D:
     ReleaseAll
     End
 
-_13AB:
+Common_13AB:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     FacePlayer
@@ -1464,7 +1464,7 @@ _13AB:
     ReleaseAll
     End
 
-_13BE:
+Common_13BE:
     Call _13C8
     ReturnCommonScript
     End
@@ -1518,10 +1518,10 @@ _1470:
     Message pl_msg_00000213_00117
     Return
 
-_1475:
+Common_1475:
     End
 
-_1477:
+Common_1477:
     LockAll
     GetCurrentMapID VAR_0x8004
     GoToIfEq VAR_0x8004, 220, _14AC
@@ -1575,7 +1575,7 @@ _157B:
     ReleaseAll
     End
 
-_1581:
+Common_1581:
     StopMusic 0
     GetPlayerGender VAR_RESULT
     CallIfEq VAR_RESULT, GENDER_MALE, _15A7
@@ -1591,32 +1591,35 @@ _15AD:
     ScrCmd_057 SEQ_THE_BOY
     Return
 
-_15B3:
+Common_15B3:
     StopMusic 0
     ScrCmd_057 SEQ_THE_RIV
     ReturnCommonScript
     End
 
-_15BF:
+Common_15BF:
     StopMusic 0
     ScrCmd_057 SEQ_TSURETEKE
     ReturnCommonScript
     End
 
-_15CB:
+Common_15CB:
     StopMusic 0
     ScrCmd_057 SEQ_PL_HANDSOME
     ReturnCommonScript
     End
 
-_15D7:
+Common_Unk_041_4:
+Common_Unk_041_3:
+Common_Unk_041_2:
+Common_Unk_041:
     FadeOutBGM 0, 30
     StopMusic 0
     PlayDefaultMusic
     ReturnCommonScript
     End
 
-_15E7:
+Common_15E7:
     FadeScreen 6, 1, 0, 0
     WaitFadeScreen
     ScrCmd_0B3 VAR_RESULT
@@ -1636,21 +1639,21 @@ _1624:
     ReturnCommonScript
     End
 
-_1636:
+Common_1636:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     SetVar VAR_0x8004, TUTOR_LOCATION_ROUTE_212
     GoTo _1672
     End
 
-_164A:
+Common_164A:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     SetVar VAR_0x8004, TUTOR_LOCATION_SURVIVAL_AREA
     GoTo _1672
     End
 
-_165E:
+Common_165E:
     PlayFanfare SEQ_SE_CONFIRM
     LockAll
     SetVar VAR_0x8004, TUTOR_LOCATION_SNOWPOINT_CITY
@@ -1673,7 +1676,7 @@ _16A4:
     ReleaseAll
     End
 
-_16AA:
+Common_16AA:
     GoToIfSet FLAG_UNK_0x0089, _1706
     GoToIfNe VAR_BATTLE_FACTORY_PRINT_STATE, 4, _1706
     GoToIfNe VAR_BATTLE_HALL_PRINT_STATE, 4, _1706
@@ -1689,7 +1692,7 @@ _1706:
     ReturnCommonScript
     End
 
-_170A:
+Common_170A:
     Message pl_msg_00000213_00130
     WaitABXPadPress
     CloseMessage

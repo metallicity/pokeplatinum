@@ -1,4 +1,5 @@
 #include "macros/scrcmd.inc"
+#include "res/field/scripts/scripts_common.h"
 #include "res/text/bank/eterna_city_underground_man_house.h"
 
 
@@ -170,13 +171,13 @@ _01DF:
     Message 6
     SetVar VAR_0x8004, 1
     SetVar VAR_0x8005, 1
-    CallCommonScript 0x7DD
+    CallCommonScript (2000 + Common_Unk_013)
     SetVar VAR_0x8004, 23
     SetVar VAR_0x8005, 1
-    CallCommonScript 0x7DD
+    CallCommonScript (2000 + Common_Unk_013)
     SetVar VAR_0x8004, 28
     SetVar VAR_0x8005, 1
-    CallCommonScript 0x7DD
+    CallCommonScript (2000 + Common_Unk_013)
     Message 7
     WaitABXPadPress
     CloseMessage
@@ -212,7 +213,7 @@ _029B:
     Message 14
     SetVar VAR_0x8004, 33
     SetVar VAR_0x8005, 1
-    CallCommonScript 0x7DD
+    CallCommonScript (2000 + Common_Unk_013)
     Message 15
     WaitABXPadPress
     CloseMessage

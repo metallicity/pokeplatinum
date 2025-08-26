@@ -11,6 +11,7 @@ help() {
     echo "  -o | --objcopy      path to the objcopy executable for data extraction"
     echo "  -d | --out-dir      directory for output files (default: current directory)"
     echo "  -M | --depfile      output a compiler-generated depfile for the source"
+    echo "  -H | --header       path to output header"
 }
 
 INCLUDE_ARGS=()
@@ -20,6 +21,7 @@ OBJCOPY="arm-none-eabi-objcopy"
 LD="arm-none-eabi-ld"
 OUTDIR="."
 MD=""
+HEADER=""
 
 while [[ $# -gt 0 ]] ; do
     case $1 in 
@@ -51,6 +53,11 @@ while [[ $# -gt 0 ]] ; do
             MD="-MD"
             shift
             ;;
+        -H|--header)
+            HEADER="$2"
+            shift
+            shift
+            ;;
         *)
             SCRIPT_FILES+=("$1")
             shift
@@ -65,6 +72,18 @@ for script_file in "${SCRIPT_FILES[@]}" ; do
     # Target output files
     script_obj="$OUTDIR/$script_noext.o"
     script_bin="$OUTDIR/$script_noext"
+
+    if [ -n "$HEADER" ]; then
+        GUARD=$(sed 's/\//_/g;s/\..*//;s/^_//;s/.*/\U&_H/' <<< $HEADER)
+        {
+            echo "#ifndef ${GUARD}"
+            echo "#define ${GUARD}"
+            echo ""
+            awk 'BEGIN { i = 0 } /ScriptEntry \w+/ { print "#define " $2 " " i; i++ }' < "$script_file"
+            echo ""
+            echo "#endif /* ${GUARD} */"
+        } > "${HEADER}"
+    fi
 
     # Convert + clean-up
     $AS $MD -c -x assembler-with-cpp "${INCLUDE_ARGS[@]}" -o "$script_obj" "$script_file"

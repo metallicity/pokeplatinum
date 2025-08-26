@@ -1133,15 +1133,24 @@ scr_seq_files = files(
 
 scr_seq_narc_order = files('scripts.order')
 
+input = []
+foreach f : scr_seq_files
+    basename = f.full_path().split('/')[-1].split('.')[0]
+    input += script_bin_gen.process(f,
+        extra_args: [
+            '--depfile',
+            '--out-dir', scr_seq_private_dir,
+            '--header', meson.current_build_dir() / basename + '.h',
+        ]
+    )
+endforeach
+
 scr_seq_narc = custom_target('scr_seq.narc',
     output: [
         'scr_seq.narc',
         'scr_seq.naix.h',
     ],
-    input: script_bin_gen.process(
-        scr_seq_files,
-        extra_args: ['--depfile', '--out-dir', scr_seq_private_dir]
-    ),
+    input: input,
     command: [
         narc_exe, 'create',
         '--naix',
