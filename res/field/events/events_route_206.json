@@ -24,7 +24,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3024,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [
                 4
             ],
@@ -40,7 +40,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3028,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 1
             ],
@@ -56,7 +56,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3025,
-            "initial_dir": 2,
+            "initial_dir": "DIR_WEST",
             "data": [
                 5
             ],
@@ -72,7 +72,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3029,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [
                 2
             ],
@@ -88,7 +88,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3026,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [
                 3
             ],
@@ -104,7 +104,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3030,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 1
             ],
@@ -120,7 +120,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3027,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 1
             ],
@@ -136,7 +136,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3031,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [
                 3
             ],
@@ -152,7 +152,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 5,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 4
             ],
@@ -168,7 +168,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 4,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 3
             ],
@@ -184,7 +184,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0020",
             "script": 10000,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -198,7 +198,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0021",
             "script": 10000,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -212,7 +212,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0022",
             "script": 10000,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -226,7 +226,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0414",
             "script": 7030,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -240,7 +240,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0415",
             "script": 7031,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -254,7 +254,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 2800,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 18
             ],
@@ -270,7 +270,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 2800,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 19
             ],
@@ -286,7 +286,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 2800,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 20
             ],
@@ -302,7 +302,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 2800,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 21
             ],
@@ -319,7 +319,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0161",
             "script": 65535,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -333,7 +333,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0417",
             "script": 7033,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -347,7 +347,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0416",
             "script": 7032,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -361,7 +361,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3450,
-            "initial_dir": 1,
+            "initial_dir": "DIR_SOUTH",
             "data": [
                 2
             ],
@@ -377,7 +377,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "0",
             "script": 3,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,

@@ -7,7 +7,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3342,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [
                 2
             ],
@@ -23,7 +23,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3279,
-            "initial_dir": 3,
+            "initial_dir": "DIR_EAST",
             "data": [
                 2
             ],
@@ -39,7 +39,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3339,
-            "initial_dir": 2,
+            "initial_dir": "DIR_WEST",
             "data": [
                 2
             ],
@@ -55,7 +55,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3283,
-            "initial_dir": 1,
+            "initial_dir": "DIR_SOUTH",
             "data": [
                 2
             ],

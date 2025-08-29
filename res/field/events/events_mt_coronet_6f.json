@@ -7,7 +7,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "FLAG_UNK_0x028F",
             "script": 3525,
-            "initial_dir": 2,
+            "initial_dir": "DIR_WEST",
             "data": [
                 6
             ],

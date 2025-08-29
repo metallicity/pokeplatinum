@@ -16,7 +16,7 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "flag": "FLAG_UNK_0x0451",
             "script": 7091,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [],
             "movement_range_x": 0,
             "movement_range_z": 0,
@@ -30,7 +30,7 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "flag": "0",
             "script": 3531,
-            "initial_dir": 0,
+            "initial_dir": "DIR_NORTH",
             "data": [
                 2
             ],

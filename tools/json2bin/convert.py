@@ -6,6 +6,7 @@ from generated import (
     ai_flags,
     bg_event_dirs,
     items,
+    facing_dirs,
     genders,
     map_headers,
     maps,
@@ -67,6 +68,9 @@ def from_var_flag(s: str) -> int:
     if s.isnumeric():
         return int(s)
     return vars_flags.VarFlag[s].value
+
+def from_facing_dir(s: str) -> int:
+    return facing_dirs.FacingDir[s].value
 
 def from_map_header(s: str) -> int:
     return map_headers.MapHeader[s].value

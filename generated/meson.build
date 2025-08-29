@@ -47,6 +47,7 @@ metang_generators = {
     'evolution_methods': { 'type': 'enum', 'tag': 'EvolutionMethod' },
     'exp_rates': { 'type': 'enum', 'tag': 'ExpRate' },
     'game_records': { 'type': 'enum', 'tag': 'GameRecord' },
+    'facing_dirs': { 'type': 'enum', 'tag': 'FacingDir' },
     'fade_types': { 'type': 'enum', 'tag': 'FadeType' },
     'first_arrival_to_zones': { 'type': 'enum', 'tag': 'FirstArrivalToZone' },
     'footprint_sizes': { 'type': 'enum', 'tag': 'FootprintSize' },
